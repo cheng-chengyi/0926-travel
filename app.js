@@ -213,7 +213,7 @@
   /* ── 區塊組件 ─────────────────────────── */
   function label(txt) { return el("div", "sec-label", esc(txt)); }
   function head(eyebrow, latin, h1, meta) {
-    return el("div", "dayhead",
+    return el("div", "dayhead sectionhead",
       '<div class="eyebrow"><b>' + esc(eyebrow) + "</b>　" + esc(latin) + "</div>" +
       "<h1>" + esc(h1) + "</h1>" +
       '<div class="daymeta">' + esc(meta) + "</div>");
@@ -856,6 +856,23 @@
     var rCzk = parseFloat(store("fx:czk") || "1.52");
     var at = parseInt(store("fx:at") || "0", 10);
 
+    var money = el("section", "visual-card money-card");
+    money.appendChild(el("div", "visual-copy",
+      '<span class="visual-kicker">CASH GUIDE</span><h3>鈔票與硬幣</h3>' +
+      '<p>奧地利、德國使用歐元；捷克主要使用克朗。</p>'));
+    money.appendChild(el("div", "cash-grid",
+      '<div class="cash-country"><b>歐元 EUR</b>' +
+        '<div class="cash-art" role="img" aria-label="歐元鈔票與硬幣示意">' +
+          '<span class="banknote eur-note"><i>€</i><strong>20</strong></span>' +
+          '<span class="coin euro-two">€2</span><span class="coin euro-one">€1</span>' +
+        '</div><small>紙鈔 €5–€200<br>硬幣 1 cent–€2</small></div>' +
+      '<div class="cash-country"><b>捷克克朗 CZK</b>' +
+        '<div class="cash-art" role="img" aria-label="捷克克朗鈔票與硬幣示意">' +
+          '<span class="banknote czk-note"><i>Kč</i><strong>200</strong></span>' +
+          '<span class="coin czk-fifty">50</span><span class="coin czk-twenty">20</span>' +
+        '</div><small>紙鈔 100–5000 Kč<br>硬幣 1–50 Kč</small></div>'));
+    view.appendChild(money);
+
     var bar = el("div", "wxbar");
     var btn = el("button", "btn", "自動更新匯率");
     btn.addEventListener("click", function () {
@@ -921,6 +938,19 @@
   }
 
   function subBasic() {
+    var power = el("section", "visual-card power-card");
+    power.appendChild(el("div", "power-visual",
+      '<div class="socket" role="img" aria-label="歐規 Type C、E、F 圓形雙孔插座示意">' +
+        '<span class="socket-hole left"></span><span class="socket-hole right"></span>' +
+        '<span class="earth top"></span><span class="earth bottom"></span></div>' +
+      '<div class="plug" aria-hidden="true"><span class="plug-pin p1"></span>' +
+        '<span class="plug-pin p2"></span></div>'));
+    power.appendChild(el("div", "visual-copy",
+      '<span class="visual-kicker">POWER</span><h3>230V・50Hz</h3>' +
+      '<p><b>歐規圓形雙腳</b>，常見 C／E／F 型。請帶歐規轉接頭。</p>' +
+      '<small>手機、相機與筆電充電器若標示 INPUT 100–240V，可直接使用；吹風機等高功率電器請先確認電壓。</small>'));
+    view.appendChild(power);
+
     var t = el("table", "kv");
     D.practical.forEach(function (p) {
       var tr = el("tr");
@@ -1043,7 +1073,7 @@
 
   function renderMine() {
     view.appendChild(head("我的", "Personale", "我的資料",
-      "只存在這台手機，不會上傳，也不在 GitHub 上"));
+      ""));
     view.appendChild(el("div", "stave"));
 
     var gap = daysToGo();
