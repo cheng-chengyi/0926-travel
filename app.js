@@ -413,8 +413,7 @@
       times.appendChild(el("div", "flight-arrow", '✈'));
       times.appendChild(el("div", "flight-leg", '<small>抵達</small><strong>' + esc(flight.arr) + '</strong>'));
       fc.appendChild(times);
-      fc.appendChild(el("div", "flight-meta", esc(flight.date) + '　' + esc(flight.dur) + '　' +
-        esc(flight.ac) + (flight.cabin ? '　' + esc(flight.cabin) : '')));
+      fc.appendChild(el("div", "flight-meta", esc(flight.date) + '　' + esc(flight.dur) + '　' + esc(flight.ac)));
       w.appendChild(fc);
     }
 
@@ -1056,8 +1055,7 @@
       var tr = el("tr");
       tr.appendChild(el("td", "k", esc(f.no)));
       tr.appendChild(el("td", null, esc(f.date) + "　" + esc(f.dep) + " → " + esc(f.arr) +
-        '<br><span class="dim">' + esc(f.dur) + "　" + esc(f.ac) +
-        (f.cabin ? "　" + esc(f.cabin) : "") + "</span>"));
+        '<br><span class="dim">' + esc(f.dur) + "　" + esc(f.ac) + "</span>"));
       ft.appendChild(tr);
     });
     view.appendChild(ft);

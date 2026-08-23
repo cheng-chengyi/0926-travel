@@ -1,12 +1,12 @@
 /* 奧捷 12 天隨身手冊 — 離線快取
    改版時把 VERSION 加一，舊快取會自動清掉。 */
-var VERSION = "oc-v18";
+var VERSION = "oc-v19";
 
 var CORE = [
   "./",
   "index.html",
-  "app.css?v=18",
-  "app.js?v=18",
+  "app.css?v=19",
+  "app.js?v=19",
   "data/itinerary.json",
   "data/borders.json",
   "manifest.webmanifest",
