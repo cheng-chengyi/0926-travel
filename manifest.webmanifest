@@ -1,0 +1,17 @@
+{
+  "name": "音樂與古城之間優雅｜奧捷 12 天",
+  "short_name": "奧捷 12 天",
+  "description": "奧地利・捷克 12 天離線隨身手冊",
+  "lang": "zh-Hant",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7FBFC",
+  "theme_color": "#1677A6",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

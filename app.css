@@ -1,0 +1,429 @@
+/* ── 奧捷 12 天隨身手冊 ──────────────────────────────
+   色票：石灰壁 / 墨綠 / 石榴石 / 特蕾莎黃 / 銅鏽
+   ------------------------------------------------ */
+:root{
+  --paper:#EEF0EB;
+  --paper-2:#F7F8F5;
+  --ink:#16231E;
+  --ink-2:#41504A;
+  --ink-3:#75837D;
+  --garnet:#8C1D33;
+  --gold:#C7972A;
+  --patina:#4E7A6B;
+  --rule:#CFD5CE;
+  --fs:1rem;
+  --maxw:44rem;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti TC","Noto Serif TC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+}
+html[data-type="l"]{--fs:1.125rem}
+html[data-type="xl"]{--fs:1.25rem}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:var(--fs);
+  line-height:1.75;
+  -webkit-text-size-adjust:100%;
+  padding-bottom:calc(4.25rem + env(safe-area-inset-bottom));
+}
+button{font-family:inherit;font-size:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--garnet);outline-offset:2px}
+
+/* ── 頂欄 ── */
+.topbar{
+  position:sticky;top:0;z-index:30;
+  background:var(--ink);color:#EDF0EC;
+  padding-top:env(safe-area-inset-top);
+}
+.topbar-in{
+  max-width:var(--maxw);margin:0 auto;
+  display:flex;align-items:center;gap:.75rem;
+  padding:.55rem 1rem;
+}
+.brand{display:flex;flex-direction:column;min-width:0;flex:1}
+.brand-title{
+  font-family:var(--serif);font-size:1.02em;font-weight:600;
+  letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.brand-sub{font-size:.68em;color:#9FB0A8;letter-spacing:.04em;margin-top:-.15em}
+.topbar-tools{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.icon-btn{
+  background:none;border:1px solid #3D4F48;border-radius:.35rem;
+  padding:.15rem .45rem;font-size:.78em;line-height:1.5;cursor:pointer;
+}
+.icon-btn sup{font-size:.7em}
+.net-dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--patina);flex:none}
+.net-dot.off{background:var(--gold)}
+
+/* ── 樂章條（招牌元件）── */
+.rail{
+  position:sticky;top:calc(env(safe-area-inset-top) + 2.9rem);z-index:20;
+  background:var(--paper);border-bottom:1px solid var(--rule);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.rail::-webkit-scrollbar{display:none}
+.rail-track{display:flex;gap:0;padding:0 .5rem;max-width:var(--maxw);margin:0 auto;width:max-content}
+.pip{
+  flex:none;background:none;border:0;border-bottom:2px solid transparent;
+  padding:.5rem .62rem .45rem;cursor:pointer;text-align:center;
+  display:flex;flex-direction:column;line-height:1.25;
+}
+.pip-n{font-family:var(--serif);font-size:.95em;font-weight:600;color:var(--ink-3)}
+.pip-d{font-size:.62em;letter-spacing:.04em;color:var(--ink-3)}
+.pip[aria-selected="true"]{border-bottom-color:var(--garnet)}
+.pip[aria-selected="true"] .pip-n{color:var(--garnet)}
+.pip[aria-selected="true"] .pip-d{color:var(--ink-2)}
+.pip.today .pip-d::after{content:"・今日";color:var(--gold)}
+
+/* ── 版面 ── */
+.view{max-width:var(--maxw);margin:0 auto;padding:1.25rem 1rem 2rem}
+.view:focus{outline:none}
+
+/* 日次抬頭 */
+.dayhead{margin-bottom:1.1rem}
+.eyebrow{
+  font-family:var(--serif);font-style:italic;font-size:.82em;
+  color:var(--garnet);letter-spacing:.08em;
+}
+.eyebrow b{font-style:normal;font-weight:600;color:var(--ink-2);letter-spacing:.12em}
+.dayhead h1{
+  font-family:var(--serif);font-size:1.72em;font-weight:600;
+  margin:.15em 0 .2em;line-height:1.3;letter-spacing:.02em;
+}
+.daymeta{font-size:.8em;color:var(--ink-2);letter-spacing:.03em}
+.daymeta .km{color:var(--patina);margin-left:.5em}
+
+/* 五線譜分隔（招牌紋樣） */
+.stave{height:9px;margin:.85rem 0 1.15rem;
+  background:repeating-linear-gradient(to bottom,var(--rule) 0 1px,transparent 1px 3px);
+  opacity:.85}
+
+/* 卡片 */
+.card{background:var(--paper-2);border:1px solid var(--rule);border-radius:.4rem;padding:.9rem 1rem;margin:0 0 .85rem}
+.card h3{font-family:var(--serif);font-size:1.06em;font-weight:600;margin:0 0 .35em;letter-spacing:.02em}
+.card p{margin:0 0 .6em}
+.card p:last-child{margin-bottom:0}
+.lede{font-size:.97em;color:var(--ink-2);margin:0 0 1rem}
+
+.sec-label{
+  font-size:.7em;letter-spacing:.22em;color:var(--ink-3);
+  text-transform:none;margin:1.5rem 0 .6rem;font-weight:600;
+}
+.sec-label::before{content:"";display:inline-block;width:1.4em;height:1px;background:var(--patina);vertical-align:.35em;margin-right:.5em}
+
+.hist{font-size:.92em;color:var(--ink-2);margin:0 0 .7em}
+ul.musts{margin:0;padding-left:0;list-style:none}
+ul.musts li{position:relative;padding-left:1.15em;margin-bottom:.5em;font-size:.94em}
+ul.musts li:last-child{margin-bottom:0}
+ul.musts li::before{content:"";position:absolute;left:0;top:.72em;width:.42em;height:.42em;border-radius:50%;background:var(--gold)}
+
+/* 照片 */
+figure.shot{margin:0 0 .85rem;border:1px solid var(--rule);border-radius:.4rem;overflow:hidden;background:var(--paper-2)}
+figure.shot img{display:block;width:100%;height:auto}
+figure.shot .ph{
+  padding:1.4rem 1rem;text-align:center;color:var(--ink-3);font-size:.78em;
+  background:repeating-linear-gradient(135deg,#E8EBE6 0 8px,#EEF0EB 8px 16px);
+}
+figure.shot figcaption{padding:.6rem .85rem;font-size:.84em;color:var(--ink-2);border-top:1px solid var(--rule)}
+
+/* 小方框 */
+.box{border-left:3px solid var(--gold);background:#FBF7EA;padding:.75rem .9rem;border-radius:0 .3rem .3rem 0;margin:0 0 .85rem;font-size:.92em}
+.box.stay{border-left-color:var(--patina);background:#EFF5F2}
+.box.warn{border-left-color:var(--garnet);background:#F9EEF0}
+.box b{font-weight:600}
+.box .caveat{display:block;margin-top:.45em;font-size:.88em;color:var(--ink-3)}
+.opt{margin:.45em 0 0}
+.opt strong{font-weight:600}
+.opt span{color:var(--ink-2)}
+
+/* 表格 */
+table.kv{width:100%;border-collapse:collapse;margin:0 0 1rem;font-size:.9em}
+table.kv td{border:1px solid var(--rule);padding:.55rem .65rem;vertical-align:top}
+table.kv td.k{width:6.5em;background:#E7EAE5;font-weight:600;color:var(--ink-2)}
+
+/* 清單 */
+.check{list-style:none;margin:0;padding:0}
+.check li{border-bottom:1px solid var(--rule)}
+.check label{display:flex;gap:.7rem;align-items:flex-start;padding:.62rem .1rem;cursor:pointer;font-size:.95em}
+.check input{margin:.42em 0 0;width:1.05em;height:1.05em;accent-color:var(--patina);flex:none}
+.check input:checked + span{color:var(--ink-3);text-decoration:line-through}
+
+/* 我的資料 */
+.field{margin:0 0 .9rem}
+.field label{display:block;font-size:.76em;letter-spacing:.1em;color:var(--ink-3);margin-bottom:.25rem}
+.field input,.field textarea{
+  width:100%;font-family:inherit;font-size:.95em;color:var(--ink);
+  background:var(--paper-2);border:1px solid var(--rule);border-radius:.3rem;padding:.5rem .6rem;
+}
+.field textarea{min-height:5rem;resize:vertical;line-height:1.6}
+.hint{font-size:.8em;color:var(--ink-3);margin:.4rem 0 1.2rem}
+
+/* 導航列 */
+.tabbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;
+  background:var(--ink);display:flex;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.tab{
+  flex:1;background:none;border:0;padding:.75rem .2rem;cursor:pointer;
+  color:#8B9C95;font-size:.8em;letter-spacing:.14em;
+  border-top:2px solid transparent;
+}
+.tab.is-on{color:#F2F4F1;border-top-color:var(--gold)}
+
+/* 今日天氣 */
+.wxchip{
+  display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;
+  border:1px solid var(--rule);border-radius:.4rem;
+  background:var(--paper-2);padding:.5rem .8rem;margin:0 0 .8rem;
+}
+.wx-city{font-family:var(--serif);font-size:.95em;font-weight:600}
+.wx-t{font-size:1.15em;font-weight:600;color:var(--garnet);font-variant-numeric:tabular-nums}
+.wx-s{font-size:.82em;color:var(--ink-2)}
+.wxchip.empty .wx-s{color:var(--ink-3)}
+.wxbar{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin:0 0 1rem}
+.wxbar .hint{margin:0}
+table.wxtab td{font-variant-numeric:tabular-nums}
+.dim{color:var(--ink-3)}
+
+/* 當日路線一行 */
+.routeline{
+  font-size:.84em;color:var(--ink-2);border-left:2px solid var(--patina);
+  padding-left:.7rem;margin:0 0 .9rem;
+}
+
+/* 分段導航 */
+.seg{display:flex;gap:.3rem;flex-wrap:wrap;margin:.2rem 0 0}
+.seg-b{
+  background:var(--paper-2);border:1px solid var(--rule);border-radius:999px;
+  padding:.28rem .8rem;font-size:.82em;cursor:pointer;color:var(--ink-2);
+}
+.seg-b.on{background:var(--ink);border-color:var(--ink);color:#F2F4F1}
+
+/* 按鈕 */
+.btn{
+  display:inline-block;background:var(--ink);color:#F2F4F1;border:1px solid var(--ink);
+  border-radius:.3rem;padding:.42rem .95rem;font-size:.86em;cursor:pointer;
+}
+.btn:disabled{opacity:.55;cursor:default}
+.btn.ghost{background:none;color:var(--ink-2);border-color:var(--rule)}
+.btnrow{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 1rem}
+
+/* 進度／計數列 */
+.prog{
+  font-size:.8em;letter-spacing:.06em;color:var(--ink-2);
+  background:#E7EAE5;border-radius:.3rem;padding:.42rem .7rem;margin:0 0 1rem;
+}
+
+/* 摺疊：貼心提醒 */
+details.acc{border-bottom:1px solid var(--rule);padding:.15rem 0}
+details.acc summary{
+  cursor:pointer;list-style:none;padding:.62rem .1rem;
+  font-family:var(--serif);font-size:1em;font-weight:600;
+}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary::after{content:"＋";float:right;color:var(--ink-3);font-family:var(--sans)}
+details.acc[open] summary::after{content:"－"}
+details.acc ul.musts{padding:0 .1rem .85rem}
+
+/* 行程包含區的小標 */
+.kk{
+  font-size:.7em;letter-spacing:.18em;color:var(--ink-3);
+  font-weight:600;margin:.65em 0 .35em;
+}
+.kk:first-child{margin-top:0}
+
+/* 自由日路線可選 */
+.card.pick.on{border-color:var(--patina);background:#EFF5F2}
+.pickbtn{
+  background:none;border:1px solid var(--rule);border-radius:999px;
+  padding:.22rem .8rem;font-size:.8em;cursor:pointer;color:var(--ink-2);margin-top:.4rem;
+}
+.card.pick.on .pickbtn{border-color:var(--patina);color:var(--patina);font-weight:600}
+
+/* 總覽路線圖 */
+.mapwrap{
+  border:1px solid var(--rule);border-radius:.4rem;background:#EDF1EC;
+  padding:.3rem;margin:0 0 .7rem;overflow:hidden;
+}
+.mapwrap.compact{margin:0 0 .9rem}
+.routemap{width:100%;height:auto;display:block}
+
+/* 陸塊 */
+.routemap .land{fill:#E2E7DF;stroke:#FFFFFF;stroke-width:1.2}
+.routemap .land-on{fill:#D3DCD2}
+
+/* 路線 */
+.routemap .leg{
+  fill:none;stroke:var(--garnet);stroke-width:2.6;
+  stroke-linejoin:round;stroke-linecap:round;
+}
+.routemap .leg-dim{stroke:#B99AA0;stroke-width:1.8}
+.routemap .leg-hot{stroke:var(--garnet);stroke-width:4}
+.routemap .fly{fill:none;stroke:var(--patina);stroke-width:1.6;stroke-dasharray:7 5}
+
+/* 節點 */
+.routemap .node{cursor:pointer}
+.routemap .node-dim{opacity:.45}
+.routemap .mp{fill:var(--paper);stroke:var(--ink);stroke-width:2.4}
+.routemap .mp-big{fill:var(--ink)}
+.routemap .mp-hot{fill:var(--garnet);stroke:var(--garnet)}
+.routemap .mlab{font-family:var(--serif);font-size:20px;font-weight:600;fill:var(--ink)}
+.routemap .mdate{font-family:var(--sans);font-size:16px;fill:var(--ink-2)}
+.routemap .halo{fill:none;stroke:#EDF1EC;stroke-width:4.5;stroke-linejoin:round}
+.routemap .mfly{font-family:var(--sans);font-size:15px;fill:var(--patina)}
+.routemap .mcountry{
+  font-family:var(--sans);font-size:17px;fill:#8FA08C;letter-spacing:.2em;
+}
+
+/* 逐日一覽表 */
+table.ovt td.k{white-space:nowrap;line-height:1.35}
+table.ovt tr.on td{background:#EFF5F2}
+table.ovt tr.on td.k{box-shadow:inset 3px 0 0 var(--garnet)}
+table.ovt .km{margin-left:.5rem}
+
+/* 布拉格市區圖 */
+.pgmap{background:#EFF2EE}
+.routemap .river{
+  fill:none;stroke:#BFD3DC;stroke-width:24;
+  stroke-linejoin:round;stroke-linecap:round;
+}
+.routemap .mriver{
+  font-family:var(--sans);font-size:16px;fill:#7C9AA6;letter-spacing:.2em;
+}
+.routemap .pgleg{
+  fill:none;stroke:var(--garnet);stroke-width:3;stroke-dasharray:1 7;
+  stroke-linecap:round;
+}
+.routemap .pgnode circle{fill:#C3CBC2;stroke:none}
+.routemap .pgnode.on circle{fill:var(--garnet)}
+.routemap .pglab{font-family:var(--serif);font-size:19px;font-weight:600;fill:var(--ink)}
+.routemap .pglab.halo{fill:none;stroke:#EFF2EE;stroke-width:4.5;stroke-linejoin:round}
+
+/* 自由日路線卡 */
+.rhead h3{margin:0 0 .15rem}
+.rtag{
+  font-family:var(--sans);font-size:.6em;font-weight:400;letter-spacing:.14em;
+  color:var(--ink-3);border:1px solid var(--rule);border-radius:.2rem;
+  padding:.1em .45em;margin-left:.55em;vertical-align:.22em;
+}
+.rmeta{
+  font-family:var(--sans);font-size:.78em;color:var(--garnet);
+  margin:0 0 .5rem;letter-spacing:.02em;
+}
+
+/* 時間軸 */
+ol.tline{list-style:none;margin:.2rem 0 .9rem;padding:0}
+ol.tline li{
+  border-left:2px solid var(--rule);padding:0 0 .85rem 1rem;
+  margin-left:.25rem;position:relative;
+}
+ol.tline li:last-child{border-left-color:transparent;padding-bottom:0}
+ol.tline li::before{
+  content:"";position:absolute;left:-5px;top:.42em;width:8px;height:8px;
+  border-radius:50%;background:var(--garnet);
+}
+ol.tline .tt{
+  display:inline-block;font-family:var(--mono,var(--sans));font-size:.78em;
+  color:var(--ink-3);letter-spacing:.04em;margin-right:.55em;
+  font-variant-numeric:tabular-nums;
+}
+ol.tline b{font-family:var(--serif);font-size:1.02em}
+.maplink{display:inline-block;font-family:var(--serif);font-size:1.02em;font-weight:700;color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+ol.tline .tn{display:block;font-size:.86em;color:var(--ink-2);margin-top:.15rem}
+.daily-record{margin-top:1.4rem}
+.daily-record textarea{min-height:4.8rem}
+
+/* ── 旅行時間軸・大字版 ───────────────────── */
+:root{
+  --paper:#F5F2EA;--paper-2:#FFFFFF;--ink:#10243A;--ink-2:#405469;--ink-3:#718092;
+  --garnet:#E85D3F;--gold:#F2B84B;--patina:#187C8C;--rule:#D9E0E4;
+  --maxw:48rem;--serif:var(--sans);
+}
+body{background:linear-gradient(180deg,#EAF2F3 0,#F5F2EA 18rem);line-height:1.68}
+.topbar{background:rgba(16,36,58,.96);box-shadow:0 6px 22px rgba(16,36,58,.16);backdrop-filter:blur(10px)}
+.topbar-in{padding:.72rem 1rem}
+.brand-title{font-family:var(--sans);font-weight:800;font-size:1.08em;letter-spacing:.02em}
+.brand-sub{color:#B8D9DD;font-size:.62em;font-weight:700;letter-spacing:.14em;margin-top:.05rem}
+.icon-btn{border-color:#557087;border-radius:999px;padding:.22rem .58rem;background:#19344D}
+.rail{top:calc(env(safe-area-inset-top) + 3.35rem);background:rgba(245,242,234,.94);border:0;box-shadow:0 8px 18px rgba(16,36,58,.08);backdrop-filter:blur(10px)}
+.rail-track{gap:.38rem;padding:.55rem .75rem}
+.pip{min-width:3.35rem;border:0;border-radius:.85rem;padding:.46rem .62rem;background:#FFF;box-shadow:0 2px 7px rgba(16,36,58,.07)}
+.pip-n{font-family:var(--sans);font-weight:900;font-size:1em;color:var(--ink)}
+.pip-d{font-weight:700;font-size:.62em}
+.pip[aria-selected="true"]{background:var(--garnet);box-shadow:0 6px 14px rgba(232,93,63,.28)}
+.pip[aria-selected="true"] .pip-n,.pip[aria-selected="true"] .pip-d{color:#FFF}
+.view{padding:1.35rem 1rem 3rem}
+.dayhead{display:grid;grid-template-columns:4.8rem 1fr;gap:1rem;align-items:center;margin:.25rem 0 1rem}
+.daybadge{height:4.8rem;border-radius:1.35rem;background:var(--garnet);color:#FFF;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(232,93,63,.28);line-height:1}
+.daybadge span{font-size:.58em;font-weight:900;letter-spacing:.18em}.daybadge b{font-size:2.15em;margin-top:.15rem}
+.daycopy{min-width:0}.eyebrow{font-family:var(--sans);font-style:normal;font-size:.68em;font-weight:800;color:var(--patina);text-transform:uppercase}
+.dayhead h1{font-family:var(--sans);font-size:1.72em;font-weight:900;margin:.08em 0;letter-spacing:-.03em}
+.daymeta{font-size:.82em;font-weight:650;color:var(--ink-2)}
+.timeline-rule{display:flex;align-items:center;gap:.65rem;color:var(--ink-3);font-size:.62em;font-weight:900;letter-spacing:.18em;margin:.7rem 0 1.2rem}
+.timeline-rule::before,.timeline-rule::after{content:"";height:2px;background:var(--rule);flex:1}.timeline-rule::before{max-width:2.5rem;background:var(--garnet)}
+.stave{height:2px;background:var(--rule);opacity:1}
+.routeline{border:0!important;border-radius:1rem!important;background:#10243A!important;color:#FFF!important;padding:.9rem 1rem!important;box-shadow:0 8px 20px rgba(16,36,58,.14)}
+.lede{font-size:1.02em;color:var(--ink-2);background:rgba(255,255,255,.64);padding:1rem;border-radius:1rem}
+.sec-label{font-size:.74em;font-weight:900;letter-spacing:.12em;color:var(--ink);margin-top:1.7rem}
+.sec-label::before{width:.55rem;height:.55rem;border-radius:50%;background:var(--garnet);vertical-align:.05em}
+.card,.box,figure.shot,.mapwrap{border:0;border-radius:1.1rem;background:#FFF;box-shadow:0 5px 18px rgba(16,36,58,.08)}
+.card{padding:1.05rem 1rem}.card h3{font-family:var(--sans);font-size:1.08em;font-weight:850}
+.box{border-left:0;padding:1rem}.box.stay{background:#EAF4F3}.box.warn{background:#FFF0EC}.box:not(.stay):not(.warn){background:#FFF9E9}
+.pick{border:2px solid transparent}.pick.on{border-color:var(--patina)}
+.pickbtn,.btn{min-height:2.8rem;border-radius:.85rem!important;font-weight:800!important}
+table.kv{border-spacing:0 .35rem;border-collapse:separate}table.kv td{border:0;background:#FFF;padding:.7rem}.kv tr td:first-child{border-radius:.75rem 0 0 .75rem}.kv tr td:last-child{border-radius:0 .75rem .75rem 0}table.kv td.k{background:#E7F1F2;color:var(--ink);font-weight:800}
+.check li{border:0;margin:.4rem 0;background:#FFF;border-radius:.8rem;box-shadow:0 2px 8px rgba(16,36,58,.05)}
+.check label{min-height:3.2rem;align-items:center;padding:.7rem .8rem}.check input{width:1.35rem;height:1.35rem;margin:0}
+.field input,.field textarea{background:#FFF;border:2px solid #D9E0E4;border-radius:.85rem;padding:.7rem .8rem}.field input:focus,.field textarea:focus{border-color:var(--patina);outline:none}
+.tabbar{background:rgba(16,36,58,.98);padding:.4rem .35rem calc(.3rem + env(safe-area-inset-bottom));gap:.2rem}
+.tab{display:flex;flex-direction:column;align-items:center;gap:.12rem;border:0;border-radius:.75rem;padding:.42rem .15rem;color:#9EB0C0;letter-spacing:.04em}
+.tab-ico{display:block;font-size:1.25em;line-height:1}.tab-g{font-size:.78em;font-weight:750}
+.tab.is-on{color:#FFF;background:#24435D;border:0}.tab.is-on .tab-ico{color:var(--gold)}
+@media(min-width:650px){.view{padding-left:1.5rem;padding-right:1.5rem}.dayhead{grid-template-columns:5.4rem 1fr}.daybadge{height:5.4rem}.dayhead h1{font-size:2em}}
+
+/* v17 明亮旅行色：天空藍／湖水綠／暖橘 */
+:root{
+  --paper:#F7FBFC;--paper-2:#FFFFFF;--ink:#15324A;--ink-2:#486477;--ink-3:#708A99;
+  --garnet:#F06449;--gold:#FFC857;--patina:#1D9AAA;--rule:#D6E8EC;
+}
+body{background:linear-gradient(180deg,#DDF4FA 0,#F7FBFC 17rem,#FFF9EF 100%)}
+.topbar{background:rgba(22,119,166,.97);box-shadow:0 6px 22px rgba(18,105,145,.20)}
+.brand-sub{color:#E1F7FC}.icon-btn{background:#2A8DB8;border-color:#87CDE3;color:#FFF}.net-dot{background:#B8F2D0}.net-dot.off{background:#FFD166}
+.rail{background:rgba(247,251,252,.95)}
+.pip{background:#FFF;box-shadow:0 3px 10px rgba(21,85,112,.10)}
+.pip[aria-selected="true"]{background:#F06449;box-shadow:0 7px 16px rgba(240,100,73,.28)}
+.daybadge{background:linear-gradient(145deg,#FF7A59,#F05454);box-shadow:0 10px 24px rgba(240,84,84,.25)}
+.routeline{background:linear-gradient(135deg,#1677A6,#1D9AAA)!important;box-shadow:0 8px 20px rgba(22,119,166,.18)}
+.lede{background:rgba(255,255,255,.82)}
+.card,.box,figure.shot,.mapwrap{box-shadow:0 6px 20px rgba(21,85,112,.09)}
+.box.stay{background:#E4F7F3}.box.warn{background:#FFF0EC}.box:not(.stay):not(.warn){background:#FFF7DA}
+table.kv td.k{background:#DFF3F5}.check li{box-shadow:0 3px 10px rgba(21,85,112,.07)}
+.tabbar{background:rgba(22,119,166,.98)}.tab{color:#CBEAF3}.tab.is-on{background:#0E638C}.tab.is-on .tab-ico{color:#FFD166}
+.flight-card{margin:.9rem 0 1rem;padding:1rem;border-radius:1.1rem;background:#FFF;box-shadow:0 7px 22px rgba(21,85,112,.12);border-top:5px solid var(--gold)}
+.flight-no{display:flex;align-items:baseline;gap:.55rem;color:var(--patina)}.flight-no span{font-size:.7em;font-weight:800;letter-spacing:.12em}.flight-no b{font-size:1.35em;color:var(--ink)}
+.flight-times{display:grid;grid-template-columns:1fr auto 1fr;gap:.55rem;align-items:center;margin:.65rem 0}.flight-leg small{display:block;color:var(--ink-3);font-weight:750}.flight-leg strong{display:block;font-size:1.02em;line-height:1.45}.flight-arrow{width:2.35rem;height:2.35rem;border-radius:50%;display:grid;place-items:center;background:#DDF4FA;color:#1677A6;font-size:1.15em}.flight-meta{padding-top:.6rem;border-top:1px solid var(--rule);font-size:.78em;color:var(--ink-2);font-weight:650}
+@media(max-width:430px){.flight-times{grid-template-columns:1fr}.flight-arrow{transform:rotate(90deg);width:2rem;height:2rem}.flight-leg strong{font-size:.95em}}
+
+table.kv tr.tot td{border-top:1.5px solid var(--ink);font-weight:600}
+
+.check li.done{opacity:.62}
+.check .own{font-weight:600}
+.check .own::after{
+  content:"當日";font-weight:400;font-size:.7em;letter-spacing:.1em;
+  color:var(--garnet);border:1px solid currentColor;border-radius:.2rem;
+  padding:0 .25em;margin-left:.45em;vertical-align:.12em;
+}
+
+@media (min-width:640px){
+  .view{padding:1.75rem 1.5rem 2.5rem}
+  .dayhead h1{font-size:2em}
+}
+@media (prefers-reduced-motion:no-preference){
+  .view{animation:fade .18s ease-out}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+}
