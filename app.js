@@ -485,11 +485,20 @@
       mb.appendChild(el("div", null, "<b>集合</b>　" + esc(m.time)));
       mb.appendChild(el("div", "opt", "<strong>" + esc(m.place) + "・" + esc(m.terminal) +
         "</strong><br><span>" + esc(m.warn) + "</span>"));
-      (D.meta.hsr || []).forEach(function (t) {
+      (D.meta.hsr || []).slice(0, 1).forEach(function (t) {
         mb.appendChild(el("div", "opt", "<strong>高鐵 " + esc(t.when) + "　" + esc(t.leg) +
           "</strong><br><span>" + esc(t.note) + "</span>"));
       });
       w.appendChild(mb);
+    }
+
+    if (d.n === 12 && D.meta.hsr && D.meta.hsr[1]) {
+      var rt = D.meta.hsr[1];
+      var rb = el("div", "box stay");
+      rb.appendChild(el("div", null, "<b>回程高鐵</b>"));
+      rb.appendChild(el("div", "opt", "<strong>高鐵 " + esc(rt.when) + "　" + esc(rt.leg) +
+        "</strong><br><span>" + esc(rt.note) + "</span>"));
+      w.appendChild(rb);
     }
 
     if (d.summary) w.appendChild(el("p", "lede", esc(d.summary)));
