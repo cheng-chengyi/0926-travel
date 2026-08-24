@@ -22,8 +22,8 @@
   }
   function store(k, v) {
     try {
-      if (v === undefined) return localStorage.getItem("oc:" + k);
-      localStorage.setItem("oc:" + k, v);
+      if (v === undefined) return localStorage.getItem("oc-public:" + k);
+      localStorage.setItem("oc-public:" + k, v);
     } catch (e) { return null; }
   }
   function two(n) { return (n < 10 ? "0" : "") + n; }
@@ -223,6 +223,14 @@
     arr.forEach(function (m) { ul.appendChild(el("li", null, esc(m))); });
     return ul;
   }
+  function attractionLink(name) {
+    var a = el("a", "attraction-link", "查看景點地圖 ↗");
+    a.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(name);
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.setAttribute("aria-label", "在地圖中查看「" + name + "」");
+    return a;
+  }
   function shot(src, cap) {
     var f = el("figure", "shot");
     var img = new Image();
@@ -235,6 +243,60 @@
     f.appendChild(img);
     if (cap) f.appendChild(el("figcaption", null, esc(cap)));
     return f;
+  }
+
+  function hotelOption(o) {
+    var c = el("article", "hotel-option");
+    c.appendChild(el("h3", null, esc(o.name)));
+    if (o.note) c.appendChild(el("p", "hotel-note", esc(o.note)));
+
+    var query = o.mapQuery || o.name;
+    var actions = el("div", "hotel-actions");
+    [["官方網站", o.url],
+     ["開啟地圖", "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query)]].forEach(function (a) {
+      if (!a[1]) return;
+      var link = el("a", "hotel-link", esc(a[0]) + " ↗");
+      link.href = a[1]; link.target = "_blank"; link.rel = "noopener noreferrer";
+      actions.appendChild(link);
+    });
+    c.appendChild(actions);
+
+    c.appendChild(el("p", "nearby-intro", esc(o.nearbyNote ||
+      "住宿確認後，可用下列連結查看旅館周邊目前營業的商店。")));
+    var nearby = el("div", "nearby-links");
+    [["超市・食品", "supermarket near " + query, "補水、零食、水果與簡單早餐"],
+     ["藥局・日用品", "pharmacy near " + query, "常備藥、盥洗用品與旅行補給"],
+     ["購物・伴手禮", "shopping near " + query, "商場、在地商店與紀念品"]].forEach(function (s) {
+      var a = el("a", "nearby-link", "<b>" + esc(s[0]) + "</b><span>" + esc(s[2]) + "</span>");
+      a.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(s[1]);
+      a.target = "_blank"; a.rel = "noopener noreferrer";
+      nearby.appendChild(a);
+    });
+    c.appendChild(nearby);
+    return c;
+  }
+
+  /* 說明會 PDF 第 9–10 頁的正式住宿；未公布的維也納不以候選飯店代替。 */
+  function pdfStay(d) {
+    var wanted = {
+      "9/27": "Grandior Hotel Prague", "9/28": "Grandior Hotel Prague",
+      "9/29": "Grandior Hotel Prague", "9/30": "Hotel Imperial",
+      "10/1": "Hotel Grand", "10/2": "Mercure Salzburg",
+      "10/3": "Strandhotel Margaretha"
+    }[d.date];
+    if (d.date === "10/4" || d.date === "10/5") return {
+      label: "維也納住宿（說明會 PDF 尚未公布飯店名稱）", options: [],
+      caveat: "確認最終住宿通知後，再補上官網、地圖與周邊商店。"
+    };
+    if (!wanted) return d.stay;
+    var found = null;
+    (D.days || []).some(function (day) {
+      return ((day.stay && day.stay.options) || []).some(function (o) {
+        if (o.name.indexOf(wanted) !== -1) { found = o; return true; }
+        return false;
+      });
+    });
+    return { label: found ? found.name : wanted, options: found ? [found] : [], caveat: "住宿依說明會 PDF 住宿一覽。" };
   }
 
   /* ══════════════════════════════════════════
@@ -446,6 +508,7 @@
       d.sights.forEach(function (s) {
         var c = el("div", "card");
         c.appendChild(el("h3", null, esc(s.name)));
+        c.appendChild(attractionLink(s.name));
         if (s.history) c.appendChild(el("p", "hist", esc(s.history)));
         if (s.musts && s.musts.length) c.appendChild(bullets(s.musts));
         w.appendChild(c);
@@ -491,15 +554,13 @@
     }
 
     if (d.stay) {
+      var shownStay = pdfStay(d);
       w.appendChild(label("今晚住宿"));
       var sb = el("div", "box stay");
-      sb.appendChild(el("div", null, "<b>" + esc(d.stay.label) + "</b>"));
-      (d.stay.options || []).forEach(function (o) {
-        sb.appendChild(el("div", "opt",
-          "<strong>" + esc(o.name) + "</strong><br><span>" + esc(o.note) + "</span>"));
-      });
-      if (d.stay.caveat) sb.appendChild(el("span", "caveat", esc(d.stay.caveat)));
-      if (d.stay.tip) sb.appendChild(el("span", "caveat", "提醒：" + esc(d.stay.tip)));
+      sb.appendChild(el("div", null, "<b>" + esc(shownStay.label) + "</b>"));
+      (shownStay.options || []).forEach(function (o) { sb.appendChild(hotelOption(o)); });
+      if (shownStay.caveat) sb.appendChild(el("span", "caveat", esc(shownStay.caveat)));
+      if (shownStay.tip) sb.appendChild(el("span", "caveat", "提醒：" + esc(shownStay.tip)));
       w.appendChild(sb);
     }
 
@@ -961,8 +1022,68 @@
     view.appendChild(t);
   }
 
+  var TOUR_CONTACTS = [
+    ["領隊", "莊和菊 小姐", "0927-916469"],
+    ["導遊", "丁小鈴 小姐", "0928-121930"],
+    ["禾掬旅行社", "服務電話", "06-3110660"]
+  ];
+  var PDF_NOTICES = [
+    ["證件與集合", [
+      "護照須確認效期與簽名，並將護照、機票及保險資料拍照備份；證件與現金分開保管。",
+      "集合時間為 2026/9/26 20:30，桃園國際機場第一航廈中華航空櫃檯集合。",
+      "團體旅遊請遵守領隊宣布的集合時間；若需離隊，務必先告知領隊。"
+    ]],
+    ["手提與託運行李", [
+      "手提行李依航空公司規定辦理；液體、膠狀及噴霧容器單瓶不得超過 100 ml，集中放入透明夾鏈袋。",
+      "託運行李每人 1 件、23 kg 內；刀具、剪刀與尖銳物品放入託運行李。",
+      "貴重物品、證件、固定用藥及至少一晚換洗衣物請放隨身包，不要託運。"
+    ]],
+    ["行動電源與鋰電池", [
+      "行動電源、備用鋰電池必須隨身攜帶，不可放入託運行李。",
+      "行動電源容量標示須清楚，端子應做好防短路保護；機上依航空公司規定使用與收納。"
+    ]],
+    ["藥品與健康", [
+      "每日固定用藥請攜帶足量並放在隨身行李；處方藥建議保留原包裝、處方箋或英文診斷證明。",
+      "長途飛行請適時補水與活動腿部；如有特殊健康需求，出發前先諮詢醫師並通知領隊。"
+    ]],
+    ["海關與禁止攜帶物", [
+      "返台勿攜帶肉類、含肉加工品或來源不明的動植物產品，以免觸犯非洲豬瘟及檢疫規定。",
+      "攜帶大量現金、藥品、菸酒或其他受管制物品時，應依出入境海關現行規定申報。",
+      "購買退稅商品後，請保存商品、收據及退稅單，以便離境查驗。"
+    ]],
+    ["旅途中安全", [
+      "護照、現金與信用卡分散存放；觀光區、車站與大眾運輸上注意扒手。",
+      "上下車及離開飯店前清點手機、護照、錢包與隨身包；歐盟共同緊急電話為 112。"
+    ]]
+  ];
+
+  function tourContacts() {
+    var box = el("section", "contact-box");
+    TOUR_CONTACTS.forEach(function (c) {
+      var row = el("div", "contact-row");
+      row.appendChild(el("span", "contact-role", esc(c[0])));
+      row.appendChild(el("strong", null, esc(c[1])));
+      var a = el("a", "contact-phone", esc(c[2]));
+      a.href = "tel:" + c[2].replace(/-/g, "");
+      row.appendChild(a);
+      box.appendChild(row);
+    });
+    return box;
+  }
+
   function subTips() {
-    view.appendChild(el("p", "hint", "旅行社行前提醒，點標題展開。"));
+    view.appendChild(label("領隊・導遊・旅行社"));
+    view.appendChild(tourContacts());
+    view.appendChild(label("說明會 PDF 行程注意事項"));
+    PDF_NOTICES.forEach(function (g, i) {
+      var dt = el("details", "acc pdf-notice");
+      if (i === 0) dt.open = true;
+      dt.appendChild(el("summary", null, esc(g[0])));
+      dt.appendChild(bullets(g[1]));
+      view.appendChild(dt);
+    });
+    view.appendChild(label("其他旅行提醒"));
+    view.appendChild(el("p", "hint", "點標題展開／收合。"));
     D.tips.forEach(function (g, i) {
       var dt = el("details", "acc");
       if (i === 0) dt.open = true;
@@ -1091,6 +1212,9 @@
     view.appendChild(ft);
     view.appendChild(el("p", "hint",
       "網路報到於起飛前 48 小時開放。團體票請先問領隊要不要統一劃位，別自己先選。"));
+
+    view.appendChild(label("本團聯絡資料"));
+    view.appendChild(tourContacts());
 
     GROUPS.forEach(function (g) {
       view.appendChild(label(g[0]));

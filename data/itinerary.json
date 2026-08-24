@@ -134,19 +134,31 @@
     "options": [
      {
       "name": "Ambassador Zlatá Husa 5★",
-      "note": "正對瓦茨拉夫廣場的新藝術百年建築，步行 10 分鐘達舊城廣場。"
+      "note": "正對瓦茨拉夫廣場的新藝術百年建築，步行 10 分鐘達舊城廣場。",
+      "url": "https://www.ambassador.cz/en",
+      "mapQuery": "Ambassador Zlata Husa Prague",
+      "nearbyNote": "位於瓦茨拉夫廣場，周邊超市、藥局、百貨與本土品牌商店密集。"
      },
      {
       "name": "Grandior Hotel Prague 5★",
-      "note": "共和國廣場一帶，緊鄰市民會館、火藥塔與 Palladium 購物中心。"
+      "note": "共和國廣場一帶，緊鄰市民會館、火藥塔與 Palladium 購物中心。",
+      "url": "https://www.hotel-grandior.cz/en/",
+      "mapQuery": "Grandior Hotel Prague Na Porici 42",
+      "nearbyNote": "鄰近 Florenc、共和國廣場與 Palladium，補給和購物都方便。"
      },
      {
       "name": "Jalta Boutique Hotel 5★",
-      "note": "瓦茨拉夫廣場上的 1950 年代國家登錄歷史建築，地下保留冷戰核掩體，可預約參觀。"
+      "note": "瓦茨拉夫廣場上的 1950 年代國家登錄歷史建築，地下保留冷戰核掩體，可預約參觀。",
+      "url": "https://www.hoteljalta.com/en/",
+      "mapQuery": "Jalta Boutique Hotel Prague",
+      "nearbyNote": "位於瓦茨拉夫廣場，服飾、藥局、超市及伴手禮店集中。"
      },
      {
       "name": "Hilton Prague 5★",
-      "note": "伏爾塔瓦河畔大型五星，挑高中庭氣派。"
+      "note": "伏爾塔瓦河畔大型五星，挑高中庭氣派。",
+      "url": "https://www.hilton.com/en-gb/hotels/prghitw-hilton-prague-atrium/",
+      "mapQuery": "Hilton Prague Atrium Pobrezni 311 Prague",
+      "nearbyNote": "河畔較安靜，往 Florenc 或 Karlín 一帶可找超市、藥局與餐飲。"
      }
     ],
     "caveat": "遇展期滿房改新城區或四星，每人每晚退 20 歐。"
@@ -253,313 +265,6 @@
    "km": "",
    "free": true,
    "summary": "特別加贈全日地鐵電車一日券（地鐵三線 A 綠／B 黃／C 紅＋電車網不限次數搭乘），領隊帶路私房景點，其餘時間自由探索。這是布拉格的主力採買日。",
-   "routes": [
-    {
-     "name": "推薦主線：高堡・慕夏・國家博物館",
-     "tag": "古城南側・藝術・城市記憶",
-     "detail": "上午走訪旅行團未安排的高堡與國家公墓，午後看慕夏基金會新館，再到國家博物館；避開古堡、黃金小巷、查理大橋、舊城廣場、天文鐘、市民會館與遊船等團體景點。",
-     "hours": "09:00–18:00，步行約 6 公里",
-     "stops": [
-      {"k":"vysehrad","t":"09:00","n":"高堡 Vyšehrad","note":"搭地鐵 C 線至 Vyšehrad；城牆、河景與公園免費，先走戶外景觀。","map":"https://www.google.com/maps/search/?api=1&query=Vysehrad+Prague"},
-      {"k":"basilica","t":"10:15","n":"聖彼得與聖保羅聖殿・高堡公墓","note":"教堂新藝術風格壁畫與捷克名人長眠的 Slavín；教堂成人票約 130 CZK。","map":"https://www.google.com/maps/search/?api=1&query=Basilica+of+St+Peter+and+Paul+Vysehrad"},
-      {"k":"naplavka","t":"12:00","n":"Náplavka 河岸午餐","note":"沿河散步，在河岸或周邊餐館用簡餐；遇雨可直接搭電車進市中心。","map":"https://www.google.com/maps/search/?api=1&query=Naplavka+Prague"},
-      {"k":"mucha","t":"14:00","n":"慕夏基金會藝術博物館（Savarin Palace）","note":"每日 10:00–18:00，成人 300 CZK；新館位於 Na Příkopě 10。","map":"https://www.google.com/maps/search/?api=1&query=Mucha+Foundation+Art+Museum+Savarin+Palace"},
-      {"k":"museum","t":"15:45","n":"捷克國家博物館","note":"歷史館與新館相連，成人 360 CZK；每日開放至 18:00，建議預留約 2 小時。","map":"https://www.google.com/maps/search/?api=1&query=National+Museum+Prague"},
-      {"k":"wenceslas","t":"18:00","n":"瓦茨拉夫廣場晚餐・返飯店","note":"依體力在新城用餐後返飯店；不再繞回舊城團體景點。","map":"https://www.google.com/maps/search/?api=1&query=Wenceslas+Square+Prague"}
-     ],
-     "cost":[["交通","0（一日券已由旅行團提供）"],["高堡戶外與公墓","0"],["聖殿","130 CZK"],["慕夏基金會藝術博物館","300 CZK"],["國家博物館","360 CZK"],["午餐＋咖啡＋晚餐","約 750–1,050 CZK"]],
-     "sum":"約 1,540–1,840 CZK（約 NT$2,340–2,800；購物另計）",
-     "eval":{"fit":"想避開重複景點、兼顧風景與藝術的人。","legs":"步行約 6 公里；高堡有緩坡與石板路，午後多為室內。","risk":"門票與營業時間可能調整，出發前請點官網或地圖再次確認；若體力不足，可省略國家博物館或只看大廳。"}
-    },
-    {
-     "name": "文青路線",
-     "tag": "小城區・河岸",
-     "detail": "搭 22 號電車走一趟布拉格最經典的觀光路線，在小城區下車慢走，看巴洛克圓頂、藍儂牆，最後在康帕島河畔坐下來。",
-     "hours": "半天，約 4 小時",
-     "stops": [
-      {
-       "k": "tram22",
-       "t": "09:30",
-       "n": "22 號電車",
-       "note": "從飯店最近的站上車，行經國家劇院、小城區、城堡，全程約 25 分鐘，坐右側看河景"
-      },
-      {
-       "k": "stnicholas",
-       "t": "10:15",
-       "n": "小城區聖尼古拉教堂",
-       "note": "波希米亞巴洛克代表作，圓頂濕壁畫是全歐最大之一；莫札特曾在此彈過管風琴"
-      },
-      {
-       "k": "lennon",
-       "t": "11:15",
-       "n": "約翰・藍儂牆",
-       "note": "1980 年代反抗塗鴉的延續，內容每週都在變；巷口常有街頭吉他手"
-      },
-      {
-       "k": "kampa",
-       "t": "12:00",
-       "n": "康帕島",
-       "note": "查理大橋下的河中小島，水車、河景咖啡館，遊客密度比橋上低很多"
-      },
-      {
-       "k": "charles",
-       "t": "13:30",
-       "n": "查理大橋",
-       "note": "從康帕島爬階梯上橋，剛好逆著人潮方向走回舊城"
-      }
-     ],
-     "cost": [
-      [
-       "交通",
-       "0（一日券涵蓋）"
-      ],
-      [
-       "聖尼古拉教堂",
-       "約 150"
-      ],
-      [
-       "河岸咖啡與點心",
-       "約 150–250"
-      ]
-     ],
-     "sum": "約 300–400 CZK（NT$450–600）",
-     "eval": {
-      "fit": "第一次來布拉格、想看代表性風景又不想趕行程的人。",
-      "legs": "步行約 3 公里，小城區有緩坡與石板路，走路鞋必備。",
-      "risk": "藍儂牆與康帕島之間巷弄狹窄，觀光客密集，注意隨身物品。"
-     }
-    },
-    {
-     "name": "慕夏路線",
-     "tag": "新藝術・新城",
-     "detail": "把第 2 天在聖維特教堂看到的慕夏之窗補完整。慕夏博物館是全世界唯一的慕夏常設館，走出來順著新城看幾棟代表建築。",
-     "hours": "半天，約 3.5 小時",
-     "stops": [
-      {
-       "k": "mucha",
-       "t": "09:45",
-       "n": "慕夏博物館",
-       "note": "Panská 7，地鐵 A／B 線 Můstek 站步行數分鐘；每日 9:30–18:30；館內約 300 件作品，看完約 1–1.5 小時"
-      },
-      {
-       "k": "wenceslas",
-       "t": "11:30",
-       "n": "瓦茨拉夫廣場",
-       "note": "從博物館往南走幾分鐘就到，廣場底端是國家博物館"
-      },
-      {
-       "k": "national",
-       "t": "12:30",
-       "n": "國家劇院",
-       "note": "金色屋頂是新文藝復興代表，河岸角度最好拍"
-      },
-      {
-       "k": "dancing",
-       "t": "13:30",
-       "n": "跳舞的房子",
-       "note": "從國家劇院沿河往南走約 10 分鐘；頂樓有觀景酒吧，可上去喝一杯看河"
-      }
-     ],
-     "cost": [
-      [
-       "交通",
-       "0（一日券涵蓋）"
-      ],
-      [
-       "慕夏博物館",
-       "約 300 上下（以 mucha.cz 為準）"
-      ],
-      [
-       "跳舞的房子頂樓飲料",
-       "約 200–300"
-      ],
-      [
-       "午餐",
-       "約 300"
-      ]
-     ],
-     "sum": "約 800–900 CZK（NT$1,200–1,350）",
-     "eval": {
-      "fit": "對新藝術運動、平面設計、建築有興趣的人。走的路最平。",
-      "legs": "全程平地，步行約 2.5 公里，是五條裡最省力的。",
-      "risk": "慕夏博物館空間不大，人多時會擠；建議一開門就去。"
-     }
-    },
-    {
-     "name": "購物路線",
-     "tag": "採買・退稅",
-     "detail": "前一天 9/28 國定假日大型商場強制歇業，所以這天是整趟布拉格唯一的完整採買日。捷克退稅門檻 2001 克朗，集中在同一家店買比較容易達標。",
-     "hours": "彈性，半天到一天",
-     "stops": [
-      {
-       "k": "wenceslas",
-       "t": "10:00",
-       "n": "瓦茨拉夫廣場",
-       "note": "菠丹妮（Botanicus）、曼菲羅（Manufaktura）等本土品牌沿線都有"
-      },
-      {
-       "k": "palladium",
-       "t": "11:30",
-       "n": "Palladium 購物中心",
-       "note": "共和國廣場旁，約 200 家店，室內、有廁所與餐飲，下雨天的保險選項"
-      },
-      {
-       "k": "parizska",
-       "t": "14:00",
-       "n": "巴黎大街",
-       "note": "精品與水晶；退稅單在這裡開最划算"
-      },
-      {
-       "k": "oldtown",
-       "t": "15:30",
-       "n": "舊城廣場周邊",
-       "note": "木偶、波丹妮、溫泉薄餅（lázeňské oplatky）"
-      }
-     ],
-     "cost": [
-      [
-       "交通",
-       "0（一日券涵蓋）"
-      ],
-      [
-       "午餐",
-       "約 300"
-      ],
-      [
-       "溫泉薄餅與咖啡",
-       "約 100–150"
-      ],
-      [
-       "採買",
-       "自訂——退稅門檻 2001 克朗，可退 11–16%"
-      ]
-     ],
-     "sum": "餐飲約 400 CZK，採買另計",
-     "eval": {
-      "fit": "有明確採買清單的人，或想把伴手禮一次解決的人。",
-      "legs": "商場內平地為主，但站的時間長，累的程度不輸走路。",
-      "risk": "退稅單需護照正本，記得帶；單據與商品在機場可能被要求查驗，別先託運。"
-     }
-    },
-    {
-     "name": "登高路線",
-     "tag": "全城視野",
-     "detail": "佩特任山是布拉格最好的展望點，塔頂與艾菲爾鐵塔同海拔，城堡在你的視線水平線上。",
-     "hours": "半天，約 3.5 小時",
-     "stops": [
-      {
-       "k": "ujezd",
-       "t": "09:30",
-       "n": "Újezd 纜車站",
-       "note": "搭 9／12／15／20／22 號電車到 Újezd。纜車屬大眾運輸系統，一日券直接涵蓋，不必另外買票，但務必在黃色機器打上時間"
-      },
-      {
-       "k": "petrin",
-       "t": "10:00",
-       "n": "佩特任瞭望塔",
-       "note": "1891 年建成的艾菲爾鐵塔縮小版，299 階，有電梯；塔＋鏡子迷宮聯票約 300 CZK"
-      },
-      {
-       "k": "petrin",
-       "t": "11:30",
-       "n": "玫瑰園與果園",
-       "note": "塔周邊是大片園區，免費，秋天景色好；可從中間站 Nebozízek 下車走下山"
-      },
-      {
-       "k": "stnicholas",
-       "t": "13:00",
-       "n": "小城區",
-       "note": "下山後接小城區廣場，與文青路線可以併著走"
-      }
-     ],
-     "cost": [
-      [
-       "交通與纜車",
-       "0（一日券涵蓋）"
-      ],
-      [
-       "瞭望塔＋鏡子迷宮聯票",
-       "300"
-      ],
-      [
-       "山上咖啡",
-       "約 150"
-      ]
-     ],
-     "sum": "約 450 CZK（NT$680）",
-     "eval": {
-      "fit": "想要一張把整座城拍進去的照片的人。天氣好才值得上去。",
-      "legs": "有纜車的話最省力；纜車若停駛，從 Újezd 走上山是陡坡，約 30–40 分鐘。",
-      "risk": "佩特任纜車自 2024 年起長期整修，2026 年春季預計復駛，但我查到的 2026 年資料仍有出入。出發前請上 dpp.cz 確認狀態——這條路線能不能輕鬆走完，完全取決於纜車有沒有開。"
-     }
-    },
-    {
-     "name": "科技與植物路線",
-     "tag": "布拉格 7 區・避開人潮",
-     "detail": "整天離開舊城，往北到布拉格 7 區。上午是全國最大的技術博物館，挑高大廳懸吊著火車頭、汽車與飛機；下午到特羅亞的植物園，70 公頃的坡地園區與 130 公尺長的熱帶溫室。這是四條之外最不像觀光客的一天。",
-     "hours": "整天，約 7 小時",
-     "stops": [
-      {
-       "k": "ntm",
-       "t": "09:00",
-       "n": "交通科技博物館 NTM",
-       "note": "Kostelní 42，Praha 7。電車到 Letenské náměstí，或地鐵 A 線 Hradčanská、C 線 Vltavská 轉電車。週二至週日 9:00–18:00，週一休館（9/29 週二正常）。七層樓、16 個常設展，交通館的挑高大廳是招牌。售票在閉館前 30 分鐘停止"
-      },
-      {
-       "k": "ntm",
-       "t": "12:30",
-       "n": "館內 Café Museum 或列特納公園",
-       "note": "博物館旁就是列特納公園，天氣好可以外帶到公園吃，那裡有俯瞰伏爾塔瓦河與橋群的視角"
-      },
-      {
-       "k": "troja",
-       "t": "13:45",
-       "n": "移動到特羅亞",
-       "note": "地鐵 C 線到 Nádraží Holešovice，轉 112 路公車到 Botanická zahrada Troja 或 Kovárna 站。112 路屬大眾運輸系統，一日券涵蓋"
-      },
-      {
-       "k": "troja",
-       "t": "14:15",
-       "n": "布拉格植物園",
-       "note": "三月至十月 9:00–19:00。戶外展區每日開放；Fata Morgana 熱帶溫室週一休館（9/29 正常）。園區含聖克拉拉葡萄園、日本庭園、130 公尺長溫室，海拔 179–276 公尺，坡地起伏大"
-      },
-      {
-       "k": "troja",
-       "t": "17:00",
-       "n": "回程",
-       "note": "原路 112 路回 Nádraží Holešovice 轉地鐵 C 線，約 40 分鐘回市中心"
-      }
-     ],
-     "cost": [
-      [
-       "交通",
-       "0（一日券涵蓋地鐵、電車與 112 路公車）"
-      ],
-      [
-       "NTM 全票",
-       "330；65 歲以上 200"
-      ],
-      [
-       "NTM 礦坑迴廊",
-       "＋60；65 歲以上 40（須與主票合購，不能單買）"
-      ],
-      [
-       "植物園",
-       "180；65 歲以上 95；70 歲以上 1 克朗（須出示證件）"
-      ],
-      [
-       "午餐",
-       "約 300"
-      ]
-     ],
-     "sum": "全票約 870 CZK；65 歲以上約 640 CZK（NT$970）",
-     "eval": {
-      "fit": "對機械、交通工具、工業史有興趣的人。也適合想避開舊城人潮、換個節奏過一天的人——這一區幾乎沒有觀光團。",
-      "legs": "四條裡走最多的一條。NTM 七層樓，植物園是 70 公頃坡地、海拔落差近百公尺。兩個點各留 2.5 小時以上比較從容。",
-      "risk": "NTM 與溫室都是週一休館，9/29 週二剛好正常。NTM 置物櫃需 10 克朗或 50 分硬幣，先備零錢。植物園官網買 e-ticket 打 85 折。兩地相距約 4 公里，轉乘一次約 30 分鐘，不建議下午才出門。"
-     }
-    }
-   ],
    "sights": [],
    "frames": [
     "藍儂牆塗鴉：1980 年代起民眾在此塗寫藍儂歌詞與和平訴求，成為反抗極權的象徵，至今每天更新。",
@@ -582,8 +287,7 @@
    "special": [
     "領隊帶路私房景點"
    ],
-   "wx": "prague",
-   "freeDayNote": "第 4 天是 2026/9/29（週二），不是出發日 9/26。旅行團已提供布拉格地鐵、電車一日券，估價不重複計入市區交通。推薦主線刻意避開前兩天已安排景點；以下皆為每人概估，幣別為捷克克朗（CZK），購物另計。"
+   "wx": "prague"
   },
   {
    "n": 5,
@@ -632,19 +336,31 @@
     "options": [
      {
       "name": "Hotel Esplanade Spa & Golf Resort 5★（瑪麗安斯基）",
-      "note": "山坡上的新藝術療養旅館，俯瞰溫泉鎮全景。"
+      "note": "山坡上的新藝術療養旅館，俯瞰溫泉鎮全景。",
+      "url": "https://www.esplanade-marienbad.cz/en",
+      "mapQuery": "Esplanade Spa Golf Resort Marianske Lazne",
+      "nearbyNote": "山坡旅館周邊商店較少，建議在溫泉鎮中心先補水、零食與日用品。"
      },
      {
       "name": "Hotel Imperial 5★（卡羅維瓦利）",
-      "note": "1912 年落成的山頂地標，有專屬纜車連接城區。"
+      "note": "1912 年落成的山頂地標，有專屬纜車連接城區。",
+      "url": "https://www.spa-hotel-imperial.cz/en/",
+      "mapQuery": "Hotel Imperial Karlovy Vary",
+      "nearbyNote": "山頂旅館周邊商店較少，可搭纜車到溫泉區尋找超市、藥局與紀念品店。"
      },
      {
       "name": "Grandhotel Pupp 5★（卡羅維瓦利）",
-      "note": "1701 年創立的傳奇飯店、卡羅維瓦利影展主場——若抽中等於住進景點本身。"
+      "note": "1701 年創立的傳奇飯店、卡羅維瓦利影展主場——若抽中等於住進景點本身。",
+      "url": "https://www.pupp.cz/en",
+      "mapQuery": "Grandhotel Pupp Karlovy Vary",
+      "nearbyNote": "位於溫泉區核心，附近有精品、溫泉餅、玻璃與紀念品店；一般超市需稍走。"
      },
      {
       "name": "Harvey Spa Hotel 5★",
-      "note": "溫泉區療養飯店。"
+      "note": "溫泉區療養飯店。",
+      "url": "https://www.harveyspahotel.com/",
+      "mapQuery": "Harvey Spa Hotel Frantiskovy Lazne",
+      "nearbyNote": "位於溫泉鎮公園區，商店規模較小且可能較早打烊，入住前先補給較穩妥。"
      }
     ],
     "caveat": "五星全滿改溫泉區四星或他區升等五星。"
@@ -712,15 +428,24 @@
     "options": [
      {
       "name": "Hotel Mlýn",
-      "note": "名字即「磨坊」，由河畔老磨坊改建，就在城堡下方河灣邊。"
+      "note": "名字即「磨坊」，由河畔老磨坊改建，就在城堡下方河灣邊。",
+      "url": "https://www.hotelmlyn.eu/en",
+      "mapQuery": "LH Hotel Mlyn Cesky Krumlov Parkan 120",
+      "nearbyNote": "老城內以餐廳與紀念品小店為主，大型超市較遠，建議白天先買水和零食。"
      },
      {
       "name": "Hotel Oldinn",
-      "note": "直接位於市政廣場上，推窗即古城心臟。"
+      "note": "直接位於市政廣場上，推窗即古城心臟。",
+      "url": "https://www.hoteloldinn.cz/en",
+      "mapQuery": "Hotel OLDINN Cesky Krumlov",
+      "nearbyNote": "就在市政廣場，周邊小店與餐廳多；超市選擇有限且晚間較早關門。"
      },
      {
       "name": "Hotel Grand",
-      "note": "老城區歷史建築改建。"
+      "note": "老城區歷史建築改建。",
+      "url": "https://www.hotel-grand.cz/en/",
+      "mapQuery": "Hotel Grand Cesky Krumlov namesti Svornosti 3",
+      "nearbyNote": "位於老城廣場，紀念品與餐飲方便；日用品或超市建議白天採買。"
      }
     ],
     "caveat": "遇展期滿房改住鄰近的布達優維札 České Budějovice 城區飯店。",
@@ -798,15 +523,24 @@
     "options": [
      {
       "name": "Wyndham Grand Salzburg Conference Centre 4★",
-      "note": "米拉貝爾花園一帶新城區，步行可達舊城。"
+      "note": "米拉貝爾花園一帶新城區，步行可達舊城。",
+      "url": "https://www.wyndhamgrandsalzburg.com/en",
+      "mapQuery": "Wyndham Grand Salzburg Conference Centre",
+      "nearbyNote": "鄰近中央車站與 Forum 1 購物中心，超市、藥局和餐飲集中。"
      },
      {
       "name": "Mercure Salzburg Central 4★",
-      "note": "法系連鎖，交通便利。"
+      "note": "法系連鎖，交通便利。",
+      "url": "https://all.accor.com/hotel/0984/index.en.shtml",
+      "mapQuery": "Mercure Salzburg City Bayerhamerstrasse 14",
+      "nearbyNote": "往中央車站與新城區可找到超市、藥局；飯店名稱請以最後住宿券為準。"
      },
      {
       "name": "Alpenhotel Kronprinz",
-      "note": "阿爾卑斯山中小鎮旅館，木質山居風情。"
+      "note": "阿爾卑斯山中小鎮旅館，木質山居風情。",
+      "url": "https://alpenhotel-kronprinz.de/en/",
+      "mapQuery": "Alpenhotel Kronprinz Berchtesgaden",
+      "nearbyNote": "位於山坡，老城與車站周邊才有較完整超市、藥局與日用品店。"
      }
     ]
    },
@@ -880,15 +614,24 @@
     "options": [
      {
       "name": "Strandhotel Margaretha 4★",
-      "note": "聖沃夫岡湖正湖畔，私人湖岸草坪，推窗即晨霧湖景。"
+      "note": "聖沃夫岡湖正湖畔，私人湖岸草坪，推窗即晨霧湖景。",
+      "url": "https://www.wolfgangsee.com/en/",
+      "mapQuery": "Strandhotel Margaretha St Wolfgang",
+      "nearbyNote": "湖區商店少且常較早打烊；可搜尋鎮中心超市、麵包店與在地蜂蜜店。"
      },
      {
       "name": "MONDI Hotel am Wolfgangsee",
-      "note": "沃夫岡湖區度假飯店。"
+      "note": "沃夫岡湖區度假飯店。",
+      "url": "https://www.mondihotels.com/en/",
+      "mapQuery": "MONDI Hotel am Wolfgangsee Austria",
+      "nearbyNote": "手冊名稱尚待旅行社確認；MONDI 官網目前未見同名 Wolfgangsee 據點，請以最後住宿券為準。"
      },
      {
       "name": "Scalaria Event Resort 4★",
-      "note": "湖畔度假莊園式飯店。"
+      "note": "湖畔度假莊園式飯店。",
+      "url": "https://scalaria.com/en",
+      "mapQuery": "Scalaria Event Resort St Wolfgang",
+      "nearbyNote": "位於聖沃夫岡湖畔，鎮中心可找超市、麵包店、蜂蜜與湖區紀念品。"
      }
     ],
     "caveat": "遇旺季滿房改住薩爾茲堡並每人退 20 歐。",
@@ -974,15 +717,24 @@
     "options": [
      {
       "name": "Hilton Vienna Park 5★",
-      "note": "奧地利規模最大飯店之一，正對城市公園。"
+      "note": "奧地利規模最大飯店之一，正對城市公園。",
+      "url": "https://www.hilton.com/en/hotels/viehitw-hilton-vienna-park/",
+      "mapQuery": "Hilton Vienna Park Am Stadtpark 1",
+      "nearbyNote": "緊鄰 Wien Mitte／The Mall，超市、藥局、餐飲與商場最方便。"
      },
      {
       "name": "InterContinental Wien 5★",
-      "note": "1964 年開業的老牌國際五星，面向城市公園與溜冰場。"
+      "note": "1964 年開業的老牌國際五星，面向城市公園與溜冰場。",
+      "url": "https://www.ihg.com/intercontinental/hotels/us/en/vienna/vieha/hoteldetail",
+      "mapQuery": "InterContinental Vienna Johannesgasse 28",
+      "nearbyNote": "面向城市公園，往 Wien Mitte 或 Kärntner Straße 可找到超市、藥局與購物街。"
      },
      {
       "name": "Vienna Marriott 5★",
-      "note": "環城大道 Parkring 上，對望城市公園，步行 5 分鐘達史蒂芬廣場。"
+      "note": "環城大道 Parkring 上，對望城市公園，步行 5 分鐘達史蒂芬廣場。",
+      "url": "https://www.marriott.com/en-us/hotels/vieat-vienna-marriott-hotel/overview/",
+      "mapQuery": "Vienna Marriott Hotel Parkring 12a",
+      "nearbyNote": "位於環城大道，鄰近 Wien Mitte、Kärntner Straße 與市中心購物區。"
      }
     ],
     "caveat": "遇大展會議改住布拉提斯拉瓦 Sheraton 或市區四星、他城升五星。",

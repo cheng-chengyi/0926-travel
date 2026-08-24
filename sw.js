@@ -1,19 +1,19 @@
 /* 奧捷 12 天隨身手冊 — 離線快取
    改版時把 VERSION 加一，舊快取會自動清掉。 */
-var VERSION = "oc-v27";
+var VERSION = "oc-public-v34";
 
 var CORE = [
   "./",
   "index.html",
-  "app.css?v=27",
-  "app.js?v=27",
+  "app.css?v=34-public",
+  "app.js?v=34-public",
   "data/itinerary.json",
   "data/borders.json",
   "manifest.webmanifest",
-  "icons/icon-192-v24.png",
-  "icons/icon-512-v24.png",
-  "icons/icon-180-v24.png",
-  "icons/icon-512-maskable-v24.png"
+  "icons/icon-192-public-v32.png",
+  "icons/icon-512-public-v32.png",
+  "icons/icon-180-public-v32.png",
+  "icons/icon-512-maskable-public-v32.png"
 ];
 
 self.addEventListener("install", function (e) {
