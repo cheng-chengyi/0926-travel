@@ -684,7 +684,7 @@
     { k: "ha",  n: "哈修塔特",  x: 218, y: 452, d: "10/3 宿", lx: 10, ly: 16, a: "start" },
     { k: "vi",  n: "維也納",    x: 553, y: 358, d: "10/4 宿", lx: -12, ly: -10, a: "end", big: 1 },
     { k: "pd",  n: "潘朵芙",    x: 615, y: 388, d: "10/5 逛", lx: -14, ly: 22,  a: "end" },
-    { k: "bt",  n: "布拉提斯拉瓦", x: 660, y: 310, d: "10/5 宿 🇸🇰", lx: 10, ly: -8, a: "start" }
+    { k: "bt",  n: "布拉提斯拉瓦", x: 648, y: 318, d: "10/5 宿 🇸🇰", lx: -8, ly: -12, a: "end" }
   ];
   var LEGS = ["pr", "kv", "ml", "ck", "bg", "sz", "sw", "ha", "vi", "pd", "bt"];
 
@@ -699,7 +699,7 @@
     { k: "cz", n: "捷克", x: 440, y: 186, a: "start" },
     { k: "at", n: "奧地利", x: 392, y: 396, a: "start" },
     { k: "de", n: "德國", x: 52,  y: 330, a: "start" },
-    { k: "sk", n: "斯洛伐克", x: 690, y: 244, a: "end" }
+    { k: "sk", n: "斯洛伐克", x: 672, y: 232, a: "end" }
   ];
 
   var BORDERS = null;   // data/borders.json
@@ -758,8 +758,9 @@
     var fly = compact ? "" :
       '<path class="fly" d="M301 105 L301 32"/>' +
       '<text class="mfly" x="301" y="22" text-anchor="middle">CI067　9/26 夜 台北出發</text>' +
-      '<path class="fly" d="M553 358 L664 470"/>' +
-      '<text class="mfly" x="664" y="490" text-anchor="end">CI064　10/6 維也納返台</text>';
+      '<path class="fly" d="M648 318 L553 358"/>' +
+      '<path class="fly" d="M553 358 L620 470"/>' +
+      '<text class="mfly" x="640" y="490" text-anchor="end">CI064　10/6 維也納機場返台</text>';
 
     return '<svg viewBox="0 0 700 530" class="routemap" ' +
       'xmlns="http://www.w3.org/2000/svg" role="img" ' +
