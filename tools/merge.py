@@ -69,18 +69,22 @@ patch = {
         food={"breakfast": "飯店內享用", "lunch": "湖區鱒魚料理——湖水清淨低溫，鱒魚是此地代表風味",
               "dinner": "湖區風味料理"},
         wx="hallstatt"),
-9: dict(offbus=["潘朵芙購物村（若遇公休則改維也納市區觀光）", "聖史蒂芬大教堂", "格拉本大街"],
+9: dict(offbus=["聖史蒂芬大教堂", "格拉本大街"],
         special=["維也納宮廷音樂會（庫爾沙龍 KURSALON；訂位額滿則改期或改熊布朗宮橘園、"
                  "Palais Auersperg、Palais Palffy）"],
-        food={"breakfast": "飯店內享用", "lunch": "方便逛街，敬請自理",
+        food={"breakfast": "飯店內享用", "lunch": "維也納風味料理（自理）",
               "dinner": "維也納炸豬排 Wiener Schnitzel——奧地利國菜，捶薄裹粉酥炸，配檸檬與蔓越莓醬"},
+        stay_override={"label": "維也納 SO/ Vienna 5★（多瑙運河旁設計型五星）"},
         wx="vienna"),
-10: dict(offbus=["霍夫堡宮", "瑪麗亞特蕾莎廣場", "熊布朗宮後花園", "百水公寓"],
-         special=["熊布朗宮入內參觀", "環城大道（行車經過）"],
+10: dict(offbus=["霍夫堡宮", "瑪麗亞特蕾莎廣場", "熊布朗宮後花園", "百水公寓", "布拉提斯拉瓦舊城區（視時間）"],
+         special=["熊布朗宮入內參觀", "環城大道（行車經過）", "新增斯洛伐克 🇸🇰——三國行程！"],
          food={"breakfast": "飯店內享用", "lunch": "中式七菜一湯＋水果",
-               "dinner": "烤豬肋排餐＋沙河巧克力蛋糕 Sachertorte"},
-         wx="vienna"),
-11: dict(food={"breakfast": "飯店內享用", "lunch": "機上簡餐", "dinner": "機上簡餐"},
+               "dinner": "✨ 升等西式三道式料理（Sheraton Bratislava Hotel 飯店內，旅行社加價安排）"},
+         stay_override={"label": "布拉提斯拉瓦 Sheraton Bratislava Hotel 5★"},
+         wx="bratislava"),
+11: dict(offbus=["潘朵芙購物村（今日週一正常營業）"],
+         food={"breakfast": "飯店內享用", "lunch": "方便逛街，敬請自理（Outlet 美食區）",
+               "dinner": "機上簡餐"},
          wx="vienna"),
 12: dict(food={"breakfast": "機上簡餐", "lunch": "—", "dinner": "—"}, wx=None),
 }
@@ -94,7 +98,8 @@ D["wxCities"] = [
     {"key": "krumlov",   "name": "庫倫洛夫",  "lat": 48.811, "lon": 14.315},
     {"key": "salzburg",  "name": "薩爾茲堡",  "lat": 47.800, "lon": 13.045},
     {"key": "hallstatt", "name": "哈修塔特",  "lat": 47.562, "lon": 13.649},
-    {"key": "vienna",    "name": "維也納",   "lat": 48.208, "lon": 16.373}
+    {"key": "vienna",      "name": "維也納",     "lat": 48.208, "lon": 16.373},
+    {"key": "bratislava",  "name": "布拉提斯拉瓦", "lat": 48.149, "lon": 17.108}
 ]
 D["climate"] = ("九月底至十月初的中歐：白天約 12–19°C，清晨與入夜可降到 5–8°C，"
                 "湖區與山區更低。哈修塔特、聖沃夫岡與鹽礦區的早晨最冷，"
