@@ -276,27 +276,28 @@
     return c;
   }
 
-  /* 說明會 PDF 第 9–10 頁的正式住宿；未公布的維也納不以候選飯店代替。 */
+  /* 旅行社最終確認住宿（行程調整後更新版 2026/09/04）*/
   function pdfStay(d) {
-    var wanted = {
-      "9/27": "Grandior Hotel Prague", "9/28": "Grandior Hotel Prague",
-      "9/29": "Grandior Hotel Prague", "9/30": "Hotel Imperial",
-      "10/1": "Hotel Grand", "10/2": "Mercure Salzburg",
-      "10/3": "Strandhotel Margaretha"
+    var confirmed = {
+      "9/27": { name: "Grandior Hotel Prague", mapQ: "Grandior Hotel Prague Na Prikope 28", url: "https://www.grandiorhotel.com" },
+      "9/28": { name: "Grandior Hotel Prague", mapQ: "Grandior Hotel Prague Na Prikope 28", url: "https://www.grandiorhotel.com" },
+      "9/29": { name: "Grandior Hotel Prague", mapQ: "Grandior Hotel Prague Na Prikope 28", url: "https://www.grandiorhotel.com" },
+      "9/30": { name: "Hotel Imperial Karlovy Vary 5★", mapQ: "Hotel Imperial Karlovy Vary", url: "https://www.spa-hotel-imperial.cz" },
+      "10/1": { name: "Hotel Grand Český Krumlov", mapQ: "Hotel Grand Cesky Krumlov", url: "https://www.hotelgrandck.cz" },
+      "10/2": { name: "Mercure Salzburg Central 4★", mapQ: "Mercure Salzburg Central", url: "https://all.accor.com/hotel/6635/index.en.shtml" },
+      "10/3": { name: "Strandhotel Margaretha 4★", mapQ: "Strandhotel Margaretha St Wolfgang", url: "https://www.margaretha.at" },
+      "10/4": { name: "SO/ Vienna 5★", mapQ: "SO Vienna Hotel Praterstrasse 1", url: "https://www.so-hotels.com/so-vienna",
+                note: "多瑙運河旁設計型五星，現代感十足，可欣賞維也納城市景觀。" },
+      "10/5": { name: "Sheraton Bratislava Hotel 5★", mapQ: "Sheraton Bratislava Hotel Pribinova 12", url: "https://www.marriott.com/en-us/hotels/btssi-sheraton-bratislava-hotel/overview/",
+                note: "多瑙河畔五星，旅程最後一晚。飯店內享用升等西式三道式晚餐。🇸🇰 布拉提斯拉瓦" }
     }[d.date];
-    if (d.date === "10/4" || d.date === "10/5") return {
-      label: "維也納住宿（說明會 PDF 尚未公布飯店名稱）", options: [],
-      caveat: "確認最終住宿通知後，再補上官網、地圖與周邊商店。"
+    if (!confirmed) return d.stay;
+    return {
+      label: confirmed.name,
+      options: [{ name: confirmed.name, url: confirmed.url, mapQuery: confirmed.mapQ, note: confirmed.note || "" }],
+      caveat: confirmed.note || "",
+      tip: ""
     };
-    if (!wanted) return d.stay;
-    var found = null;
-    (D.days || []).some(function (day) {
-      return ((day.stay && day.stay.options) || []).some(function (o) {
-        if (o.name.indexOf(wanted) !== -1) { found = o; return true; }
-        return false;
-      });
-    });
-    return { label: found ? found.name : wanted, options: found ? [found] : [], caveat: "住宿依說明會 PDF 住宿一覽。" };
   }
 
   /* ══════════════════════════════════════════
@@ -681,16 +682,17 @@
     { k: "sz",  n: "薩爾茲堡",  x: 133, y: 401, d: "10/2 宿", lx: -10, ly: -6, a: "end" },
     { k: "sw",  n: "聖沃夫岡",  x: 178, y: 418, d: "10/3", lx: 9,  ly: -10, a: "start" },
     { k: "ha",  n: "哈修塔特",  x: 218, y: 452, d: "10/3 宿", lx: 10, ly: 16, a: "start" },
-    { k: "pd",  n: "潘朵芙",    x: 615, y: 388, d: "10/4", lx: -14, ly: 22, a: "end" },
-    { k: "vi",  n: "維也納",    x: 553, y: 358, d: "10/4–5 宿 2 晚", lx: -12, ly: -10, a: "end", big: 1 }
+    { k: "vi",  n: "維也納",    x: 553, y: 358, d: "10/4 宿", lx: -12, ly: -10, a: "end", big: 1 },
+    { k: "pd",  n: "潘朵芙",    x: 615, y: 388, d: "10/5 逛", lx: -14, ly: 22,  a: "end" },
+    { k: "bt",  n: "布拉提斯拉瓦", x: 660, y: 310, d: "10/5 宿 🇸🇰", lx: 10, ly: -8, a: "start" }
   ];
-  var LEGS = ["pr", "kv", "ml", "ck", "bg", "sz", "sw", "ha", "pd", "vi"];
+  var LEGS = ["pr", "kv", "ml", "ck", "bg", "sz", "sw", "ha", "vi", "pd", "bt"];
 
   /* 各日對應到路線圖上的節點；第 1、12 天沒有歐洲段 */
   var DAYNODES = {
     2: ["pr"], 3: ["pr"], 4: ["pr"],
     5: ["pr", "kv", "ml"], 6: ["ml", "ck"], 7: ["ck", "bg", "sz"],
-    8: ["sz", "sw", "ha"], 9: ["ha", "pd", "vi"], 10: ["vi"], 11: ["vi"]
+    8: ["sz", "sw", "ha"], 9: ["ha", "vi"], 10: ["vi", "pd", "bt"], 11: ["bt"]
   };
 
   var COUNTRY = [
