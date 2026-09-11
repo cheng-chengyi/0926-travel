@@ -110,6 +110,7 @@
     var url = "https://api.open-meteo.com/v1/forecast" +
       "?latitude=" + lats + "&longitude=" + lons +
       "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
+      "&hourly=precipitation_probability" +
       "&timezone=Europe%2FPrague&forecast_days=16";
     WX.err = "";
     fetch(url).then(function (r) {
@@ -120,10 +121,12 @@
       var out = {};
       D.wxCities.forEach(function (c, i) {
         var s = arr[i] && arr[i].daily;
+        var h = arr[i] && arr[i].hourly;
         if (s) out[c.key] = {
           time: s.time, code: s.weather_code,
           hi: s.temperature_2m_max, lo: s.temperature_2m_min,
-          pop: s.precipitation_probability_max
+          pop: s.precipitation_probability_max,
+          htime: h ? h.time : null, hpop: h ? h.precipitation_probability : null
         };
       });
       WX.data = out; WX.at = Date.now(); wxSave();
@@ -151,6 +154,77 @@
     if (!n) return null;
     var drop = (iso && iso.indexOf("-10-") > -1) ? 1 : 0;
     return { hi: n.hi - drop, lo: n.lo - drop, norm: true };
+  }
+
+
+
+  /* 天氣卡片樣式（避免動到 app.css）*/
+  (function () {
+    if (document.getElementById("wxcss")) return;
+    var st = document.createElement("style");
+    st.id = "wxcss";
+    st.textContent =
+      ".wxcard{margin-bottom:10px}" +
+      ".wxhead{display:flex;align-items:baseline;justify-content:space-between;gap:8px}" +
+      ".wxhead .wxd{font-weight:600}" +
+      ".wxhead .wxtemp{font-size:1.25rem;font-weight:600;white-space:nowrap}" +
+      ".wxsum{margin-top:4px;font-size:.92rem;opacity:.85}" +
+      ".wxslots{display:flex;gap:6px;margin-top:10px}" +
+      ".wxslot{flex:1;text-align:center;padding:7px 4px;border-radius:8px;background:rgba(127,127,127,.12)}" +
+      ".wxslot .wxsl{display:block;font-size:.75rem;opacity:.7}" +
+      ".wxslot .wxsv{display:block;font-size:.95rem;margin-top:2px}" +
+      ".wxslot.hot{background:rgba(45,130,200,.22)}" +
+      ".wxslot.hot .wxsl,.wxslot.hot .wxsv{opacity:1;font-weight:600}" +
+      ".wxwear{margin-top:10px;padding-top:9px;border-top:1px solid rgba(127,127,127,.22);font-size:.9rem;line-height:1.55;opacity:.9}" +
+      ".wxlink{display:inline-block;margin-top:9px;font-size:.88rem;text-decoration:none}";
+    document.head.appendChild(st);
+  })();
+
+  /* 降雨時段：早上 6–12、下午 12–18、晚上 18–24 */
+  function wxSlots(cityKey, iso) {
+    if (!WX.data || !WX.data[cityKey]) return null;
+    var s = WX.data[cityKey];
+    if (!s.htime || !s.hpop) return null;
+    var am = -1, pm = -1, ev = -1;
+    for (var i = 0; i < s.htime.length; i++) {
+      var t = s.htime[i];
+      if (t.indexOf(iso) !== 0) continue;
+      var hr = parseInt(t.slice(11, 13), 10);
+      var v = s.hpop[i];
+      if (v == null) continue;
+      if (hr >= 6 && hr < 12) { if (v > am) am = v; }
+      else if (hr >= 12 && hr < 18) { if (v > pm) pm = v; }
+      else if (hr >= 18) { if (v > ev) ev = v; }
+    }
+    if (am < 0 && pm < 0 && ev < 0) return null;
+    return { am: am < 0 ? null : am, pm: pm < 0 ? null : pm, ev: ev < 0 ? null : ev };
+  }
+
+  /* 穿著建議：依高低溫，再把降雨加上去 */
+  function wxWear(f, slots) {
+    if (!f) return "";
+    var hi = f.hi, lo = f.lo, s = "";
+    if (hi >= 20) s = "薄長袖即可，早晚加件薄外套";
+    else if (hi >= 16) s = "薄長袖＋針織外套，早晚加件防風";
+    else if (hi >= 12) s = "薄長袖＋針織＋防風外套";
+    else if (hi >= 8) s = "發熱衣＋毛衣＋厚外套，圍巾手套備著";
+    else s = "厚外套必備，帽子圍巾手套齊全";
+    if (lo != null && lo <= 5) s += "；清晨低於 5°，早餐後出門先穿暖";
+    var rain = [];
+    if (slots) {
+      if (slots.am != null && slots.am >= 50) rain.push("早上");
+      if (slots.pm != null && slots.pm >= 50) rain.push("下午");
+      if (slots.ev != null && slots.ev >= 50) rain.push("晚上");
+    }
+    if (rain.length) s += "；" + rain.join("、") + "帶傘或雨衣";
+    else if (f.pop != null && f.pop >= 40) s += "；雨具隨身";
+    return s;
+  }
+
+  /* Windy 逐時雨圖 */
+  function windyUrl(c) {
+    if (!c || c.lat == null) return "";
+    return "https://www.windy.com/?" + c.lat + "," + c.lon + ",9,m:rain";
   }
 
   function wxFor(cityKey, iso) {
@@ -965,23 +1039,50 @@
 
     if (WX.data) {
       view.appendChild(label("逐日預報"));
-      var t = el("table", "kv wxtab");
       D.days.forEach(function (d) {
         if (!d.wx) return;
-        var f = wxFor(d.wx, isoOfDay(d.n));
+        var iso = isoOfDay(d.n);
+        var f = wxFor(d.wx, iso);
+        if (!f) return;
         var c = (D.wxCities.filter(function (x) { return x.key === d.wx; })[0] || {});
-        var tr = el("tr");
-        tr.appendChild(el("td", "k", d.date + "　" + esc(c.name)));
-        tr.appendChild(el("td", null, !f
-          ? '<span class="dim">—</span>'
-          : f.norm
-            ? Math.round(f.lo) + "° / " + Math.round(f.hi) + "°　" +
-              '<span class="dim">常年均值</span>'
-            : Math.round(f.lo) + "° / " + Math.round(f.hi) + "°　" + esc(wmo(f.code)) +
-              (f.pop != null ? "　降雨 " + f.pop + "%" : "")));
-        t.appendChild(tr);
+        var slots = f.norm ? null : wxSlots(d.wx, iso);
+        var card = el("div", "box wxcard");
+
+        card.appendChild(el("div", "wxhead",
+          '<span class="wxd">' + d.date + "　" + esc(c.name) + "</span>" +
+          '<span class="wxtemp">' + Math.round(f.lo) + "° / " + Math.round(f.hi) + "°</span>"));
+
+        card.appendChild(el("div", "wxsum", f.norm
+          ? '<span class="dim">常年均值（預報尚未涵蓋這天）</span>'
+          : esc(wmo(f.code)) + (f.pop != null ? "　降雨機率 " + f.pop + "%" : "")));
+
+        if (slots) {
+          var top = Math.max(slots.am == null ? -1 : slots.am,
+                             slots.pm == null ? -1 : slots.pm,
+                             slots.ev == null ? -1 : slots.ev);
+          var row = el("div", "wxslots");
+          [["早上", slots.am], ["下午", slots.pm], ["晚上", slots.ev]].forEach(function (p) {
+            var hot = (p[1] != null && p[1] === top && top >= 40);
+            row.appendChild(el("div", "wxslot" + (hot ? " hot" : ""),
+              '<span class="wxsl">' + p[0] + "</span>" +
+              '<span class="wxsv">' + (p[1] == null ? "—" : p[1] + "%") + "</span>"));
+          });
+          card.appendChild(row);
+        }
+
+        var wear = wxWear(f, slots);
+        if (wear) card.appendChild(el("div", "wxwear", esc(wear)));
+
+        var wu = windyUrl(c);
+        if (wu) {
+          var a = el("a", "wxlink", "Windy 逐時雨圖 ↗");
+          a.setAttribute("href", wu);
+          a.setAttribute("target", "_blank");
+          a.setAttribute("rel", "noopener");
+          card.appendChild(a);
+        }
+        view.appendChild(card);
       });
-      view.appendChild(t);
     }
 
     view.appendChild(label("氣候概況（永遠離線可看）"));
