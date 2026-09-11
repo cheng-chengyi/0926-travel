@@ -9,21 +9,21 @@
     "inbound": "CI064",
     "version": "2.7.1",
     "meet": {
-      "time": "115/9/26（六）20:30",
+      "time": "115/9/26（六）20:00",
       "place": "桃園國際機場　中華航空櫃檯",
       "terminal": "第一航廈",
-      "warn": "第一航廈已確認。請依電子機票與當日機場看板辦理報到。"
+      "warn": "集合時間已更新為 20:00。"
     },
     "hsr": [
       {
-        "when": "9/26（六）0672　18:13–19:36",
+        "when": "9/26（六）0670　17:48 發車",
         "leg": "台南 → 桃園",
-        "note": "團費含標準廂；65 歲以上安排商務廂"
+        "note": "台南高鐵站集合 17:20；團費含標準廂，65 歲以上安排商務廂"
       },
       {
-        "when": "10/7（三）0615　09:10–10:32",
+        "when": "10/7（三）0615　10:32 抵達",
         "leg": "桃園 → 台南",
-        "note": "PDF 飛航時刻資訊表所列班次"
+        "note": "返國當日接駁"
       }
     ],
     "flights": [
@@ -135,38 +135,20 @@
         "dinner": "中式七菜一湯＋水果"
       },
       "stay": {
-        "label": "布拉格徒步區五星（連住 3 晚）",
+        "label": "Grandior Hotel Prague 5★",
         "options": [
           {
-            "name": "Ambassador Zlatá Husa 5★",
+            "name": "Grandior Hotel Prague 5★",
+            "addr": "Na Poříčí 1052/42, 110 00 Florenc, Prague 1, Czech Republic",
+            "tel": "+420-2-26295111",
+            "mapQuery": "Na Poříčí 1052/42, 110 00 Florenc, Prague 1, Czech Republic",
             "note": "正對瓦茨拉夫廣場的新藝術百年建築，步行 10 分鐘達舊城廣場。",
             "url": "https://www.ambassador.cz/en",
-            "mapQuery": "Ambassador Zlata Husa Prague",
             "nearbyNote": "位於瓦茨拉夫廣場，周邊超市、藥局、百貨與本土品牌商店密集。"
-          },
-          {
-            "name": "Grandior Hotel Prague 5★",
-            "note": "共和國廣場一帶，緊鄰市民會館、火藥塔與 Palladium 購物中心。",
-            "url": "https://www.hotel-grandior.cz/en/",
-            "mapQuery": "Grandior Hotel Prague Na Porici 42",
-            "nearbyNote": "鄰近 Florenc、共和國廣場與 Palladium，補給和購物都方便。"
-          },
-          {
-            "name": "Jalta Boutique Hotel 5★",
-            "note": "瓦茨拉夫廣場上的 1950 年代國家登錄歷史建築，地下保留冷戰核掩體，可預約參觀。",
-            "url": "https://www.hoteljalta.com/en/",
-            "mapQuery": "Jalta Boutique Hotel Prague",
-            "nearbyNote": "位於瓦茨拉夫廣場，服飾、藥局、超市及伴手禮店集中。"
-          },
-          {
-            "name": "Hilton Prague 5★",
-            "note": "伏爾塔瓦河畔大型五星，挑高中庭氣派。",
-            "url": "https://www.hilton.com/en-gb/hotels/prghitw-hilton-prague-atrium/",
-            "mapQuery": "Hilton Prague Atrium Pobrezni 311 Prague",
-            "nearbyNote": "河畔較安靜，往 Florenc 或 Karlín 一帶可找超市、藥局與餐飲。"
           }
         ],
-        "caveat": "遇展期滿房改新城區或四星，每人每晚退 20 歐。"
+        "caveat": "遇展期滿房改新城區或四星，每人每晚退 20 歐。",
+        "confirmed": true
       },
       "shop": "舊城廣場周邊：Trdelník 煙囪捲（現烤肉桂糖香，可加冰淇淋）、烤火腿攤（秤重計價，先問價再買）。伴手禮先看不急買——連住 3 晚，後天自由活動日更好逛。",
       "tickets": [
@@ -200,7 +182,7 @@
       "weekday": "一",
       "city": "布拉格",
       "title": "河上的莫爾道，廳裡的新藝術",
-      "route": "伏爾塔瓦河遊船午宴 ＋ 市民會館晚餐",
+      "route": "伏爾塔瓦河遊船午宴 ＋ 市民會館",
       "km": "",
       "summary": "上午舊城漫遊，中午登船展開伏爾塔瓦河遊船午宴，從河面欣賞兩岸建築與橋樑群；晚間於新藝術殿堂市民會館享用晚餐。",
       "sights": [
@@ -231,12 +213,23 @@
       "food": {
         "breakfast": "飯店內享用",
         "lunch": "伏爾塔瓦河遊船午宴",
-        "dinner": "市民會館晚餐"
+        "dinner": "豬肋排風味餐（市民會館為參觀地標，晚餐地點依最新行程表為豬肋排風味餐）"
       },
       "stay": {
-        "label": "同昨日，布拉格徒步區五星",
-        "options": [],
-        "sameAs": 2
+        "label": "Grandior Hotel Prague 5★",
+        "options": [
+          {
+            "name": "Grandior Hotel Prague 5★",
+            "addr": "Na Poříčí 1052/42, 110 00 Florenc, Prague 1, Czech Republic",
+            "tel": "+420-2-26295111",
+            "mapQuery": "Na Poříčí 1052/42, 110 00 Florenc, Prague 1, Czech Republic",
+            "note": "",
+            "url": "",
+            "nearbyNote": ""
+          }
+        ],
+        "sameAs": 2,
+        "confirmed": true
       },
       "shop": "晚餐前後可逛共和國廣場旁 Palladium 購物中心（約 170 家店）；會館一樓咖啡館的新藝術空間喝杯咖啡即是體驗。",
       "tickets": [
@@ -281,9 +274,20 @@
         "dinner": "中式七菜一湯＋水果"
       },
       "stay": {
-        "label": "同前，布拉格徒步區五星（最後一晚）",
-        "options": [],
-        "sameAs": 2
+        "label": "Grandior Hotel Prague 5★",
+        "options": [
+          {
+            "name": "Grandior Hotel Prague 5★",
+            "addr": "Na Poříčí 1052/42, 110 00 Florenc, Prague 1, Czech Republic",
+            "tel": "+420-2-26295111",
+            "mapQuery": "Na Poříčí 1052/42, 110 00 Florenc, Prague 1, Czech Republic",
+            "note": "",
+            "url": "",
+            "nearbyNote": ""
+          }
+        ],
+        "sameAs": 2,
+        "confirmed": true
       },
       "shop": "布拉格採買日。菠丹妮 Botanicus（玫瑰精油、手工皂、死海泥，舊城 Týn 中庭店最大）；Manufaktura（啤酒洗髮精、溫泉護膚系列）；波希米亞水晶（Moser 或平價 Blue Praha）；捷克石榴石（認明國營 Granát Turnov 證書）；提線木偶與鼴鼠 Krtek 周邊；Koh-i-noor 刺蝟鉛筆。",
       "tickets": [
@@ -300,11 +304,11 @@
       "tempo": "Andante",
       "date": "9/30",
       "weekday": "三",
-      "city": "卡羅維瓦利・瑪麗安斯基",
+      "city": "卡羅維瓦利",
       "title": "波希米亞溫泉金三角",
-      "route": "布拉格 → 卡羅維瓦利（128KM）→ 瑪麗安斯基（55KM）",
-      "km": "183KM",
-      "summary": "西行波希米亞溫泉金三角：上午抵達「溫泉之后」卡羅維瓦利，持加贈的溫泉杯沿迴廊品飲；午後續往寧靜的「皇后之泉」瑪麗安斯基，夜宿溫泉區。",
+      "route": "布拉格 → 卡羅維瓦利（128KM）",
+      "km": "128KM",
+      "summary": "西行波希米亞溫泉金三角：上午抵達「溫泉之后」卡羅維瓦利，持加贈的溫泉杯沿迴廊品飲；午後續往寧靜的「皇后之泉」瑪麗安斯基，夜宿溫泉區。今日僅至卡羅維瓦利，瑪麗安斯基改於明日上午前往。",
       "sights": [
         {
           "name": "卡羅維瓦利（Karlovy Vary）",
@@ -337,38 +341,20 @@
         "dinner": "中式七菜一湯＋水果"
       },
       "stay": {
-        "label": "溫泉區五星",
+        "label": "Hotel Imperial 5★",
         "options": [
           {
-            "name": "Hotel Esplanade Spa & Golf Resort 5★（瑪麗安斯基）",
+            "name": "Hotel Imperial 5★",
+            "addr": "Libušina 18, Karlovy Vary, 36001, Czech Republic",
+            "tel": "+420-353203113",
+            "mapQuery": "Libušina 18, Karlovy Vary, 36001, Czech Republic",
             "note": "山坡上的新藝術療養旅館，俯瞰溫泉鎮全景。",
             "url": "https://www.esplanade-marienbad.cz/en",
-            "mapQuery": "Esplanade Spa Golf Resort Marianske Lazne",
             "nearbyNote": "山坡旅館周邊商店較少，建議在溫泉鎮中心先補水、零食與日用品。"
-          },
-          {
-            "name": "Hotel Imperial 5★（卡羅維瓦利）",
-            "note": "1912 年落成的山頂地標，有專屬纜車連接城區。",
-            "url": "https://www.spa-hotel-imperial.cz/en/",
-            "mapQuery": "Hotel Imperial Karlovy Vary",
-            "nearbyNote": "山頂旅館周邊商店較少，可搭纜車到溫泉區尋找超市、藥局與紀念品店。"
-          },
-          {
-            "name": "Grandhotel Pupp 5★（卡羅維瓦利）",
-            "note": "1701 年創立的傳奇飯店、卡羅維瓦利影展主場——若抽中等於住進景點本身。",
-            "url": "https://www.pupp.cz/en",
-            "mapQuery": "Grandhotel Pupp Karlovy Vary",
-            "nearbyNote": "位於溫泉區核心，附近有精品、溫泉餅、玻璃與紀念品店；一般超市需稍走。"
-          },
-          {
-            "name": "Harvey Spa Hotel 5★",
-            "note": "溫泉區療養飯店。",
-            "url": "https://www.harveyspahotel.com/",
-            "mapQuery": "Harvey Spa Hotel Frantiskovy Lazne",
-            "nearbyNote": "位於溫泉鎮公園區，商店規模較小且可能較早打烊，入住前先補給較穩妥。"
           }
         ],
-        "caveat": "五星全滿改溫泉區四星或他區升等五星。"
+        "caveat": "五星全滿改溫泉區四星或他區升等五星。",
+        "confirmed": true
       },
       "shop": "溫泉杯（已贈一只，可加購 Thun 瓷器彩繪款）；溫泉薄餅 Oplatky（迴廊邊現烤最香，瑪麗安斯基 Kolonáda 為老牌）；Becherovka 冰爵酒——當地釀造的草本利口酒，被戲稱「第 13 泉」，當地買最便宜；Moser 水晶（1857 年創立於本地、奧匈皇室御用）；溫泉鹽與保養品。",
       "offbus": [
@@ -396,10 +382,10 @@
       "tempo": "Allegretto grazioso",
       "date": "10/1",
       "weekday": "四",
-      "city": "庫倫洛夫",
+      "city": "瑪麗安斯基・庫倫洛夫",
       "title": "留宿中世紀",
-      "route": "瑪麗安斯基 → 庫倫洛夫（224KM）｜中古世紀變裝晚宴",
-      "km": "224KM",
+      "route": "卡羅維瓦利 → 瑪麗安斯基（55KM）→ 庫倫洛夫（224KM）｜中古世紀變裝晚宴",
+      "km": "279KM",
       "summary": "穿越南波希米亞森林南下，抵達 UNESCO 世界遺產小鎮庫倫洛夫：登彩繪塔、遊舊城，晚間換上中世紀服裝享用變裝晚宴，夜宿老城區。旅行團多半當天往返——能在古城過夜是本行程的珍貴安排，傍晚遊客散去後的空城與清晨薄霧中的紅屋頂，只屬於留宿的人。",
       "sights": [
         {
@@ -429,32 +415,21 @@
         "dinner": "中古世紀變裝晚宴"
       },
       "stay": {
-        "label": "庫倫洛夫老城徒步區四星",
+        "label": "Hotel Grand Cesky Krumlov 4★",
         "options": [
           {
-            "name": "Hotel Mlýn",
+            "name": "Hotel Grand Cesky Krumlov 4★",
+            "addr": "Náměstí Svornosti 3, Cesky Krumlov, 38101, Czech Republic",
+            "tel": "+420-380711671",
+            "mapQuery": "Náměstí Svornosti 3, Cesky Krumlov, 38101, Czech Republic",
             "note": "名字即「磨坊」，由河畔老磨坊改建，就在城堡下方河灣邊。",
             "url": "https://www.hotelmlyn.eu/en",
-            "mapQuery": "LH Hotel Mlyn Cesky Krumlov Parkan 120",
             "nearbyNote": "老城內以餐廳與紀念品小店為主，大型超市較遠，建議白天先買水和零食。"
-          },
-          {
-            "name": "Hotel Oldinn",
-            "note": "直接位於市政廣場上，推窗即古城心臟。",
-            "url": "https://www.hoteloldinn.cz/en",
-            "mapQuery": "Hotel OLDINN Cesky Krumlov",
-            "nearbyNote": "就在市政廣場，周邊小店與餐廳多；超市選擇有限且晚間較早關門。"
-          },
-          {
-            "name": "Hotel Grand",
-            "note": "老城區歷史建築改建。",
-            "url": "https://www.hotel-grand.cz/en/",
-            "mapQuery": "Hotel Grand Cesky Krumlov namesti Svornosti 3",
-            "nearbyNote": "位於老城廣場，紀念品與餐飲方便；日用品或超市建議白天採買。"
           }
         ],
         "caveat": "遇展期滿房改住鄰近的布達優維札 České Budějovice 城區飯店。",
-        "tip": "晚宴後與翌日清晨各散步一次，無人石板巷是留宿限定。"
+        "tip": "※ 旅行社提醒：庫倫洛夫老城區車輛管制，請攜帶「過夜包」——大行李留車上，只帶一晚所需。",
+        "confirmed": true
       },
       "shop": "石板街手作小店的木製玩具與手工皂；五瓣玫瑰家徽紀念品；蜂蜜酒 Medovina（波希米亞傳統熱飲，秋涼喝正好）；Eggenberg 城堡啤酒。",
       "tickets": [
@@ -485,8 +460,8 @@
       "tempo": "Scherzo",
       "date": "10/2",
       "weekday": "五",
-      "city": "貝希特斯加登・薩爾茲堡",
-      "title": "白色黃金與莫札特",
+      "city": "貝希特斯加登・國王湖・薩爾茲堡",
+      "title": "白色黃金、國王湖與莫札特",
       "route": "庫倫洛夫 → 貝希特斯加登鹽礦（251KM）→ 薩爾茲堡（32KM）",
       "km": "283KM",
       "summary": "清晨可自由再逛一次無人古城。上午車行入德國巴伐利亞，體驗貝希特斯加登鹽礦地底之旅；午後抵達莫札特故鄉薩爾茲堡。",
@@ -524,41 +499,29 @@
         "dinner": "中式七菜一湯＋水果"
       },
       "stay": {
-        "label": "薩爾茲堡四星",
+        "label": "Mercure Salzburg City 4★",
         "options": [
           {
-            "name": "Wyndham Grand Salzburg Conference Centre 4★",
+            "name": "Mercure Salzburg City 4★",
+            "addr": "Bayerhamerstrasse 14a, Salzburg, 5020, Austria",
+            "tel": "+43-6628814380",
+            "mapQuery": "Bayerhamerstrasse 14a, Salzburg, 5020, Austria",
             "note": "米拉貝爾花園一帶新城區，步行可達舊城。",
             "url": "https://www.wyndhamgrandsalzburg.com/en",
-            "mapQuery": "Wyndham Grand Salzburg Conference Centre",
             "nearbyNote": "鄰近中央車站與 Forum 1 購物中心，超市、藥局和餐飲集中。"
-          },
-          {
-            "name": "Mercure Salzburg Central 4★",
-            "note": "法系連鎖，交通便利。",
-            "url": "https://all.accor.com/hotel/0984/index.en.shtml",
-            "mapQuery": "Mercure Salzburg City Bayerhamerstrasse 14",
-            "nearbyNote": "往中央車站與新城區可找到超市、藥局；飯店名稱請以最後住宿券為準。"
-          },
-          {
-            "name": "Alpenhotel Kronprinz",
-            "note": "阿爾卑斯山中小鎮旅館，木質山居風情。",
-            "url": "https://alpenhotel-kronprinz.de/en/",
-            "mapQuery": "Alpenhotel Kronprinz Berchtesgaden",
-            "nearbyNote": "位於山坡，老城與車站周邊才有較完整超市、藥局與日用品店。"
           }
-        ]
+        ],
+        "confirmed": true
       },
       "shop": "鹽礦：食用岩鹽、浴鹽、岩鹽燈——「白色黃金」是最有故事的伴手。薩爾茲堡：莫札特巧克力球 Mozartkugel——認明銀藍色紙包的 Fürst 創始老店（1890 年原創、僅薩爾茲堡有售）與紅金色量產版 Mirabell 的差別；街頭小吃 Bosna（薩爾茲堡發明的咖哩洋蔥香腸堡）與鹽味蝴蝶餅 Brezel。",
       "tickets": [
-        "貝希特斯加登鹽礦（如遇關閉，每人退費 15 歐元）",
-        "薩爾茲堡登山纜車"
+        "貝希特斯加登鹽礦（如遇關閉，每人退費 15 歐元）"
       ],
       "offbus": [
         "莫札特故居",
         "米拉貝爾花園"
       ],
-      "caveat": "行程未含國王湖。國王湖只出現在行程表的圖片說明頁，本日實際安排是鹽礦與登山纜車。",
+      "caveat": "最新版行程表已將國王湖列入本日標題，但未列於門票欄；登山纜車已自門票欄移除。實際是否登船／搭纜車請以出發前領隊說明為準。",
       "wx": "salzburg",
       "photos": [
         {
@@ -615,32 +578,21 @@
         "dinner": "湖區風味料理"
       },
       "stay": {
-        "label": "湖區四星（住進湖景裡）",
+        "label": "Strandhotel Margaretha 4★",
         "options": [
           {
             "name": "Strandhotel Margaretha 4★",
+            "addr": "Markt 67, Sankt Wolfgang im Salzkammergut, 5360, Austria",
+            "tel": "+43-613823790",
+            "mapQuery": "Markt 67, Sankt Wolfgang im Salzkammergut, 5360, Austria",
             "note": "聖沃夫岡湖正湖畔，私人湖岸草坪，推窗即晨霧湖景。",
             "url": "https://www.wolfgangsee.com/en/",
-            "mapQuery": "Strandhotel Margaretha St Wolfgang",
             "nearbyNote": "湖區商店少且常較早打烊；可搜尋鎮中心超市、麵包店與在地蜂蜜店。"
-          },
-          {
-            "name": "MONDI Hotel am Wolfgangsee",
-            "note": "沃夫岡湖區度假飯店。",
-            "url": "https://www.mondihotels.com/en/",
-            "mapQuery": "MONDI Hotel am Wolfgangsee Austria",
-            "nearbyNote": "手冊名稱尚待旅行社確認；MONDI 官網目前未見同名 Wolfgangsee 據點，請以最後住宿券為準。"
-          },
-          {
-            "name": "Scalaria Event Resort 4★",
-            "note": "湖畔度假莊園式飯店。",
-            "url": "https://scalaria.com/en",
-            "mapQuery": "Scalaria Event Resort St Wolfgang",
-            "nearbyNote": "位於聖沃夫岡湖畔，鎮中心可找超市、麵包店、蜂蜜與湖區紀念品。"
           }
         ],
         "caveat": "遇旺季滿房改住薩爾茲堡並每人退 20 歐。",
-        "tip": "湖區飯店的精華在清晨——日出前後湖面晨霧、天鵝游過、群山倒影，務必早起到湖邊走走。"
+        "tip": "湖區飯店的精華在清晨——日出前後湖面晨霧、天鵝游過、群山倒影，務必早起到湖邊走走。",
+        "confirmed": true
       },
       "shop": "哈修塔特：岩鹽製品（世界最古老鹽礦的鹽最具意義）、手工木雕。聖沃夫岡：鍛鐵小物、湖區蜂蜜；白馬飯店湖畔咖啡座喝杯咖啡配甜點即是體驗。",
       "tickets": [
@@ -650,7 +602,7 @@
         "哈修塔特湖與小鎮（UNESCO）",
         "聖沃夫岡湖區"
       ],
-      "caveat": "行程表註明整修期預計到 2026 年 6 月，10 月成行應已重開。",
+      "caveat": "⚠️ 最新版行程表將整修期改為「預計到 2026 年冬季」（原為 2026 年 6 月），10/3 成行時可能仍在整修。若停駛每人退費 10 歐元，建議行前向旅行社確認。",
       "wx": "hallstatt",
       "photos": [
         {
@@ -710,18 +662,21 @@
         "dinner": "維也納炸豬排 Wiener Schnitzel——奧地利國菜，捶薄裹粉酥炸，配檸檬與蔓越莓醬"
       },
       "stay": {
-        "label": "維也納 SO/ Vienna 5★（多瑙運河旁設計型五星）",
+        "label": "SO/ Vienna 5★",
         "options": [
           {
             "name": "SO/ Vienna 5★",
+            "addr": "Praterstraße 1, 1020 Vienna, Austria",
+            "tel": "+43 1 906160",
+            "mapQuery": "Praterstraße 1, 1020 Vienna, Austria",
             "note": "知名設計型五星，位於維也納市中心多瑙運河旁，現代感十足，可欣賞漂亮的維也納城市景觀。",
             "url": "https://www.so-hotels.com/so-vienna",
-            "mapQuery": "SO Vienna Hotel Praterstrasse 1",
             "nearbyNote": "鄰近多瑙運河、普拉特公園，步行至舊城區約 10 分鐘。"
           }
         ],
         "caveat": "",
-        "tip": "設計型飯店，公共空間與客房皆極具視覺特色，建議入住後先拍攝大廳與客房夜景。"
+        "tip": "設計型飯店，公共空間與客房皆極具視覺特色，建議入住後先拍攝大廳與客房夜景。",
+        "confirmed": true
       },
       "shop": "今日重心在市區參觀與音樂會，採買機會在格拉本大街一帶。",
       "offbus": [
@@ -814,18 +769,21 @@
         "dinner": "✨ 升等西式三道式料理（Sheraton Bratislava Hotel 飯店內，旅行社加價安排）"
       },
       "stay": {
-        "label": "布拉提斯拉瓦 Sheraton Bratislava Hotel 5★",
+        "label": "Sheraton Bratislava Hotel 5★ 🇸🇰",
         "options": [
           {
-            "name": "Sheraton Bratislava Hotel 5★",
+            "name": "Sheraton Bratislava Hotel 5★ 🇸🇰",
+            "addr": "Pribinova 12, Bratislava Old Town, Bratislava, Slovak Republic",
+            "tel": "+421 2-3535-0000",
+            "mapQuery": "Pribinova 12, Bratislava Old Town, Bratislava, Slovak Republic",
             "note": "位於多瑙河畔的國際五星品牌飯店，住宿空間舒適，周邊環境及生活機能都很好。",
             "url": "https://www.marriott.com/en-us/hotels/btssi-sheraton-bratislava-hotel/overview/",
-            "mapQuery": "Sheraton Bratislava Hotel Pribinova 12",
             "nearbyNote": "多瑙河畔，舊城步行約 10 分鐘，鄰近現代商業區。"
           }
         ],
         "caveat": "",
-        "tip": "最後一晚直接於飯店內享用升等西式三道式料理，逛完市區回飯店即可輕鬆用餐。"
+        "tip": "最後一晚直接於飯店內享用升等西式三道式料理，逛完市區回飯店即可輕鬆用餐。",
+        "confirmed": true
       },
       "shop": "本行程最大採購機會！請預先列好清單並留意各店退稅門檻。",
       "offbus": [
@@ -1441,6 +1399,7 @@
         "溫泉區飯店僅住一晚，大行李不必全開"
       ],
       "6": [
+        "※ 庫倫洛夫老城區車輛管制——請攜帶過夜包，大件行李留車上",
         "過夜包——庫倫洛夫老城區石板路，大行李可能拖不進去",
         "變裝晚宴，貴重物品先收好"
       ],
@@ -1450,6 +1409,7 @@
         "薩爾茲堡纜車，怕高者留意"
       ],
       "8": [
+        "天空步道整修期已延長至 2026 年冬季，出發前跟領隊確認是否停駛（停駛每人退費 10 歐）",
         "天空步道風大，帶防風外套",
         "湖區清晨最美，想拍晨霧要早起",
         "湖區飯店僅住一晚"
