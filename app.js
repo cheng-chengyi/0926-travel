@@ -106,6 +106,7 @@
     }
     var lats = D.wxCities.map(function (c) { return c.lat; }).join(",");
     var lons = D.wxCities.map(function (c) { return c.lon; }).join(",");
+    /* 預報視窗自動對準行程：越接近出發，抓到的行程日越多 */
     var url = "https://api.open-meteo.com/v1/forecast" +
       "?latitude=" + lats + "&longitude=" + lons +
       "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
@@ -133,12 +134,35 @@
     });
   }
 
+
+  /* 常年均值（9 月底–10 月初）——預報未涵蓋時的備援，永遠離線可看 */
+  var WXNORM = {
+    prague:     { hi: 17, lo: 9  },
+    marianske:  { hi: 14, lo: 6  },
+    krumlov:    { hi: 16, lo: 6  },
+    salzburg:   { hi: 16, lo: 7  },
+    hallstatt:  { hi: 14, lo: 5  },
+    vienna:     { hi: 18, lo: 10 },
+    bratislava: { hi: 18, lo: 10 }
+  };
+  /* 10 月初比 9 月底再降約 1°C */
+  function normFor(key, iso) {
+    var n = WXNORM[key];
+    if (!n) return null;
+    var drop = (iso && iso.indexOf("-10-") > -1) ? 1 : 0;
+    return { hi: n.hi - drop, lo: n.lo - drop, norm: true };
+  }
+
   function wxFor(cityKey, iso) {
-    if (!WX.data || !WX.data[cityKey]) return null;
-    var s = WX.data[cityKey];
-    var i = s.time.indexOf(iso);
-    if (i < 0) return null;
-    return { code: s.code[i], hi: s.hi[i], lo: s.lo[i], pop: s.pop[i] };
+    if (WX.data && WX.data[cityKey]) {
+      var s = WX.data[cityKey];
+      var i = s.time.indexOf(iso);
+      if (i >= 0 && s.hi[i] != null) {
+        return { code: s.code[i], hi: s.hi[i], lo: s.lo[i], pop: s.pop[i] };
+      }
+    }
+    /* 超出預報範圍（出發日 16 天前）就給常年均值，而不是空白 */
+    return normFor(cityKey, iso);
   }
 
   function wxChip(d) {
@@ -149,8 +173,9 @@
     if (f) {
       box.innerHTML = '<span class="wx-city">' + esc(c.name) + "</span>" +
         '<span class="wx-t">' + Math.round(f.lo) + "° / " + Math.round(f.hi) + "°</span>" +
-        '<span class="wx-s">' + esc(wmo(f.code)) +
-        (f.pop != null ? "・降雨 " + f.pop + "%" : "") + "</span>";
+        '<span class="wx-s">' + (f.norm ? "常年均值" : esc(wmo(f.code)) +
+        (f.pop != null ? "・降雨 " + f.pop + "%" : "")) + "</span>";
+      if (f.norm) box.classList.add("norm");
     } else {
       box.classList.add("empty");
       box.innerHTML = '<span class="wx-city">' + esc(c.name) + "</span>" +
@@ -674,8 +699,8 @@
 
   /* 節點座標與 tools/make-borders.py 使用同一組線性投影 */
   var MAP = [
-    { k: "kv",  n: "卡羅維瓦利", x: 101, y: 86,  d: "9/30", lx: 8,   ly: -24, a: "start" },
-    { k: "ml",  n: "瑪麗安斯基", x: 79,  y: 122, d: "9/30 宿", lx: 8, ly: 16, a: "start" },
+    { k: "kv",  n: "卡羅維瓦利", x: 101, y: 86,  d: "9/30 宿", lx: 8, ly: -24, a: "start" },
+    { k: "ml",  n: "瑪麗安斯基", x: 79,  y: 122, d: "10/1 經過", lx: 8, ly: 16, a: "start" },
     { k: "pr",  n: "布拉格",    x: 301, y: 105, d: "9/27–29 宿 3 晚", lx: 12, ly: 5, a: "start", big: 1 },
     { k: "ck",  n: "庫倫洛夫",  x: 287, y: 277, d: "10/1 宿", lx: 12, ly: 5, a: "start" },
     { k: "bg",  n: "貝希特斯加登", x: 95, y: 455, d: "10/2 鹽礦", lx: -6, ly: 26, a: "start" },
@@ -691,7 +716,7 @@
   /* 各日對應到路線圖上的節點；第 1、12 天沒有歐洲段 */
   var DAYNODES = {
     2: ["pr"], 3: ["pr"], 4: ["pr"],
-    5: ["pr", "kv", "ml"], 6: ["ml", "ck"], 7: ["ck", "bg", "sz"],
+    5: ["pr", "kv"], 6: ["kv", "ml", "ck"], 7: ["ck", "bg", "sz"],
     8: ["sz", "sw", "ha"], 9: ["ha", "vi"], 10: ["vi", "pd", "bt"], 11: ["bt"]
   };
 
@@ -911,10 +936,13 @@
         var c = (D.wxCities.filter(function (x) { return x.key === d.wx; })[0] || {});
         var tr = el("tr");
         tr.appendChild(el("td", "k", d.date + "　" + esc(c.name)));
-        tr.appendChild(el("td", null, f
-          ? Math.round(f.lo) + "° / " + Math.round(f.hi) + "°　" + esc(wmo(f.code)) +
-            (f.pop != null ? "　降雨 " + f.pop + "%" : "")
-          : '<span class="dim">預報未涵蓋</span>'));
+        tr.appendChild(el("td", null, !f
+          ? '<span class="dim">—</span>'
+          : f.norm
+            ? Math.round(f.lo) + "° / " + Math.round(f.hi) + "°　" +
+              '<span class="dim">常年均值</span>'
+            : Math.round(f.lo) + "° / " + Math.round(f.hi) + "°　" + esc(wmo(f.code)) +
+              (f.pop != null ? "　降雨 " + f.pop + "%" : "")));
         t.appendChild(tr);
       });
       view.appendChild(t);
