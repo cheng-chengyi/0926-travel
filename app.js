@@ -516,6 +516,42 @@
           "</strong><br><span>" + esc(t.note) + "</span>"));
       });
       w.appendChild(mb);
+
+      /* 台南出發接送時刻（姓名／日期／時間）*/
+      if (D.meta.pickupRoster) {
+        var pr = D.meta.pickupRoster;
+        if (pr.luggage) {
+          var lb = el("div", "box stay");
+          lb.appendChild(el("div", null, "<b>" + esc(pr.luggage.title) + "</b>　" +
+            esc(pr.luggage.date) + "<br><span class=\"dim\">" + esc(pr.luggage.note) + "</span>"));
+          var lt = el("table", "kv");
+          (pr.luggage.list || []).forEach(function (r) {
+            var tr = el("tr");
+            tr.appendChild(el("td", "k", esc(r.time)));
+            tr.appendChild(el("td", null, esc(r.names)));
+            lt.appendChild(tr);
+          });
+          lb.appendChild(lt);
+          w.appendChild(lb);
+        }
+        if (pr.person) {
+          var sb = el("div", "box stay");
+          sb.appendChild(el("div", null, "<b>" + esc(pr.person.title) + "</b>　" +
+            esc(pr.person.date) + "<br><span class=\"dim\">" + esc(pr.person.note) + "</span>"));
+          (pr.person.cars || []).forEach(function (c) {
+            sb.appendChild(el("div", "opt", "<strong>" + esc(c.car) + "</strong>"));
+            var st = el("table", "kv");
+            (c.list || []).forEach(function (r) {
+              var tr2 = el("tr");
+              tr2.appendChild(el("td", "k", esc(r.time)));
+              tr2.appendChild(el("td", null, esc(r.names)));
+              st.appendChild(tr2);
+            });
+            sb.appendChild(st);
+          });
+          w.appendChild(sb);
+        }
+      }
     }
 
     if (d.n === 12 && D.meta.hsr && D.meta.hsr[1]) {
@@ -1070,7 +1106,7 @@
   var PDF_NOTICES = [
     ["證件與集合", [
       "護照須確認效期與簽名，並將護照、機票及保險資料拍照備份；證件與現金分開保管。",
-      "集合時間為 2026/9/26 20:30，桃園國際機場第一航廈中華航空櫃檯集合。",
+      "集合時間為 2026/9/26 20:00，桃園國際機場第一航廈中華航空櫃檯集合。",
       "團體旅遊請遵守領隊宣布的集合時間；若需離隊，務必先告知領隊。"
     ]],
     ["手提與託運行李", [
