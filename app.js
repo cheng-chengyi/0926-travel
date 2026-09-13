@@ -221,10 +221,14 @@
     return s;
   }
 
-  /* Windy 逐時雨圖 */
+  /* Windy 逐時雨圖
+     官方格式：https://www.windy.com/{lat}/{lon}?overlay,lat,lon,zoom,d:picker
+     overlay 必須在前，lat/lon/zoom 順序固定，座標一定要帶小數點 */
   function windyUrl(c) {
-    if (!c || c.lat == null) return "";
-    return "https://www.windy.com/?" + c.lat + "," + c.lon + ",9,m:rain";
+    if (!c || c.lat == null || c.lon == null) return "";
+    var la = Number(c.lat).toFixed(3), lo = Number(c.lon).toFixed(3);
+    return "https://www.windy.com/" + la + "/" + lo +
+           "?rain," + la + "," + lo + ",9,d:picker";
   }
 
   function wxFor(cityKey, iso) {
